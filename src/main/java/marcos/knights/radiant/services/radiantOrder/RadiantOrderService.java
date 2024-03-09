@@ -1,4 +1,4 @@
-package marcos.knights.radiant.services.order;
+package marcos.knights.radiant.services.radiantOrder;
 
 import marcos.knights.radiant.models.RadiantOrder;
 

@@ -1,4 +1,4 @@
-package marcos.knights.radiant.services.order;
+package marcos.knights.radiant.services.radiantOrder;
 
 import lombok.extern.slf4j.Slf4j;
 import marcos.knights.radiant.models.RadiantOrder;

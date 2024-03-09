@@ -1,4 +1,4 @@
-package marcos.knights.radiant.dtos.order;
+package marcos.knights.radiant.dtos.radiantOrder;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class OrderRequestDto {
+public class RadiantOrderRequestDto {
     private final String name;
     private final String sprenType;
     private final String description;

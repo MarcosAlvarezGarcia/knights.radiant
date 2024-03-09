@@ -2,10 +2,12 @@ package marcos.knights.radiant.services;
 
 
 import lombok.RequiredArgsConstructor;
+import marcos.knights.radiant.models.Message;
 import marcos.knights.radiant.models.RadiantOrder;
 import marcos.knights.radiant.models.Role;
 import marcos.knights.radiant.models.Surge;
-import marcos.knights.radiant.services.order.RadiantOrderService;
+import marcos.knights.radiant.services.message.MessageService;
+import marcos.knights.radiant.services.radiantOrder.RadiantOrderService;
 import marcos.knights.radiant.services.surge.SurgeService;
 import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ import java.util.Locale;
 public class DataInsertionService {
     private final SurgeService surgeService;
     private final RadiantOrderService radiantOrderService;
+    private final MessageService messageService;
 
     private final Faker faker = new Faker(new Locale("es-ES"));
 
@@ -198,6 +201,18 @@ public class DataInsertionService {
                     OrdersSurges[i]
             );
             radiantOrderService.save(order);
+        }
+    }
+
+    public void createMessages(int number){
+        if(number <= 0) return;
+        for(int i = 0; i < number; i++){
+            Message message = new Message(
+                    null,
+                    faker.lorem().sentence(1, 3),
+                    faker.lorem().sentence(10, 10)
+            );
+            messageService.save(message);
         }
     }
 
