@@ -36,7 +36,7 @@ public class SurgeServiceImpl implements SurgeService {
 
     @Override
     public List<Surge> findByName(String name) {
-        return surgeRepository.findSurgeByNameContainsIgnoreCase(name);
+        return surgeRepository.findSurgesByNameContainsIgnoreCase(name);
     }
 
     @Override

@@ -29,7 +29,7 @@ public class KnightsRadiantApplication {
 	public CommandLineRunner init(DataInsertionService service) {
 		return args -> {
 			service.createSurges(10);
-
+			service.createOrders(10);
 		};
 	}
 }
