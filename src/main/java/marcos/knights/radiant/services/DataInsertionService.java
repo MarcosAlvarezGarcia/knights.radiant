@@ -2,13 +2,11 @@ package marcos.knights.radiant.services;
 
 
 import lombok.RequiredArgsConstructor;
-import marcos.knights.radiant.models.Message;
-import marcos.knights.radiant.models.RadiantOrder;
-import marcos.knights.radiant.models.Role;
-import marcos.knights.radiant.models.Surge;
+import marcos.knights.radiant.models.*;
 import marcos.knights.radiant.services.message.MessageService;
 import marcos.knights.radiant.services.radiantOrder.RadiantOrderService;
 import marcos.knights.radiant.services.surge.SurgeService;
+import marcos.knights.radiant.services.task.TaskService;
 import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +20,11 @@ public class DataInsertionService {
     private final SurgeService surgeService;
     private final RadiantOrderService radiantOrderService;
     private final MessageService messageService;
+    private final TaskService taskService;
 
     private final Faker faker = new Faker(new Locale("es-ES"));
 
-    public void createSurges(int number){
+    public void createSurges(int amount){
         String[] SurgesName = {
                 "Adhesion",
                 "Gravitation",
@@ -63,8 +62,8 @@ public class DataInsertionService {
                 Role.FIRST_IDEAL,
                 Role.SECOND_IDEAL
         };
-        if(number <= 0) return;
-        for(int i = 0; i < number; i++){
+        if(amount <= 0) return;
+        for(int i = 0; i < amount; i++){
             Surge surge = new Surge(
                     null,
                     SurgesName[i],
@@ -75,7 +74,7 @@ public class DataInsertionService {
         }
     }
 
-    public void createOrders(int number){
+    public void createOrders(int amount){
         String[] OrdersName = {
                 "Windrunners",
                 "Skybreakers",
@@ -190,8 +189,8 @@ public class DataInsertionService {
         };
 
         List<Surge> surges = surgeService.findAll();
-        if(number <= 0) return;
-        for(int i = 0; i < number; i++){
+        if(amount <= 0) return;
+        for(int i = 0; i < amount; i++){
             RadiantOrder order = new RadiantOrder(
                     null,
                     OrdersName[i],
@@ -204,15 +203,28 @@ public class DataInsertionService {
         }
     }
 
-    public void createMessages(int number){
-        if(number <= 0) return;
-        for(int i = 0; i < number; i++){
+    public void createMessages(int amount){
+        if(amount <= 0) return;
+        for(int i = 0; i < amount; i++){
             Message message = new Message(
                     null,
                     faker.lorem().sentence(1, 3),
                     faker.lorem().sentence(10, 10)
             );
             messageService.save(message);
+        }
+    }
+
+    public void createTasks(int amount){
+        if(amount <= 0) return;
+        for(int i = 0; i < amount; i++){
+            Task task = new Task(
+                    null,
+                    faker.lorem().sentence(1, 3),
+                    faker.lorem().sentence(10, 10),
+                    (long) faker.number().numberBetween(0, 100)
+            );
+            taskService.save(task);
         }
     }
 
