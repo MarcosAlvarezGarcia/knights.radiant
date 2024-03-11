@@ -32,6 +32,7 @@ public class KnightsRadiantApplication {
 			service.createOrders(10);
 			service.createMessages(20);
 			service.createTasks(20);
+			service.createMissions(5);
 		};
 	}
 }

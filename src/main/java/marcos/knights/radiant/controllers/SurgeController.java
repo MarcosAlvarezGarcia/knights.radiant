@@ -50,7 +50,7 @@ public class SurgeController {
     public ResponseEntity<List<SurgeResponseDto>> getSurgesByTitle(
             @PathVariable String name
     ) {
-        log.info("getSurgesByTitle");
+        log.info("getSurgesByName");
         return ResponseEntity.ok(surgeMapper.toResponse(surgeService.findByName(name))
         );
     }

@@ -49,7 +49,7 @@ public class RadiantOrderController {
     public ResponseEntity<List<RadiantOrderResponseDto>> getRadiantOrdersByTitle(
             @PathVariable String name
     ) {
-        log.info("getRadiantOrdersByTitle");
+        log.info("getRadiantOrdersByName");
         return ResponseEntity.ok(radiantOrderMapper.toResponse(radiantOrderService.findByName(name))
         );
     }

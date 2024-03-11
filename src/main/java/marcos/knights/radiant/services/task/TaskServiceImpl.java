@@ -41,9 +41,9 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public Task setProgress(Long id, Long progress) {
-        Task task = this.findById(id);
-        task.setProgress(progress);
-        return taskRepository.save(task);
+        Task updated = this.findById(id);
+        updated.setProgress(progress);
+        return taskRepository.save(updated);
     }
 
     @Override

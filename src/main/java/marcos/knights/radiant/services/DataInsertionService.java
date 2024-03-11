@@ -4,6 +4,7 @@ package marcos.knights.radiant.services;
 import lombok.RequiredArgsConstructor;
 import marcos.knights.radiant.models.*;
 import marcos.knights.radiant.services.message.MessageService;
+import marcos.knights.radiant.services.mission.MissionService;
 import marcos.knights.radiant.services.radiantOrder.RadiantOrderService;
 import marcos.knights.radiant.services.surge.SurgeService;
 import marcos.knights.radiant.services.task.TaskService;
@@ -21,6 +22,7 @@ public class DataInsertionService {
     private final RadiantOrderService radiantOrderService;
     private final MessageService messageService;
     private final TaskService taskService;
+    private final MissionService missionService;
 
     private final Faker faker = new Faker(new Locale("es-ES"));
 
@@ -100,16 +102,16 @@ public class DataInsertionService {
                 "Stormfather, Nightwatcher and Sibling"
         };
         String[] OrdersDescription = {
-                "Those who join the Windrunners generally subscribe to a philosophy of protection",
-                "Those who join the Windrunners generally subscribe to a philosophy of protection",
-                "Those who join the Windrunners generally subscribe to a philosophy of protection",
-                "Those who join the Windrunners generally subscribe to a philosophy of protection",
-                "Those who join the Windrunners generally subscribe to a philosophy of protection",
-                "Those who join the Windrunners generally subscribe to a philosophy of protection",
-                "Those who join the Windrunners generally subscribe to a philosophy of protection",
-                "Those who join the Windrunners generally subscribe to a philosophy of protection",
-                "Those who join the Windrunners generally subscribe to a philosophy of protection",
-                "Those who join the Windrunners generally subscribe to a philosophy of protection"
+                "Those who join the Windrunners generally subscribe to a philosophy of protection.",
+                "The individuals who join the Skybreakers generally believe in following a strong moral code.",
+                "The Dustbringers believe that great power requires a strong will to control it, and their oaths are designed to teach them to control their destructive power.",
+                "Edgedancers generally subscribe to a philosophy of remembering the ordinary people of the world.",
+                "Those who join the Truthwatchers generally subscribe to a philosophy of finding the ultimate truth and sharing it.",
+                "While each order of Radiants contains a variety of personalities within it, those who join the Lightweavers generally subscribe to a philosophy of speaking truths about themselves that they must admit in order to progress as people.",
+                "Those who join the Elsecallers generally subscribe to a philosophy that they should be becoming better with each oath, seeking to explore their true potential and reach it.",
+                "Willshapers generally subscribe to a philosophy that all people should be free to make their own choices.",
+                "Those who join the Stonewards generally subscribe to a philosophy of team dynamics, on learning to work with others, and on being there for those who need them.",
+                "While each order of Radiants contains a variety of personalities within it, those who join the Bondsmiths generally subscribe to a philosophy of peace and unity."
  };
         String[] OrdersAttributes = {
                 "Protecting and leading",
@@ -228,4 +230,45 @@ public class DataInsertionService {
         }
     }
 
+    public void createMissions(int amount){
+        String[] severities = {
+                "Mild",
+                "Moderate",
+                "High",
+                "Urgent"
+        };
+        String[] difficulties = {
+                "Very eassy",
+                "Eassy",
+                "Normal",
+                "Hard",
+                "Very hard"
+        };
+        if(amount <= 0) return;
+        for(int i = 0; i < amount; i++){
+            int randomSeverity = (int) (Math.random() * severities.length);
+            int randomDifficulty = (int) (Math.random() * difficulties.length);
+            Mission mission = new Mission(
+                    null,
+                    faker.lorem().sentence(1, 3),
+                    faker.lorem().sentence(10, 10),
+                    severities[randomSeverity],
+                    difficulties[randomDifficulty],
+                    faker.lorem().sentence(2, 10),
+                    false,
+                    false
+                    );
+            missionService.save(mission);
+        }
+    }
+    public static String generateRandomSeverity(){
+        String[] possibleSeverity = {
+                "Leve",
+                "Moderado",
+                "Alto",
+                "Urgente"
+        };
+        int randomIndex = (int) (Math.random() * possibleSeverity.length);
+        return possibleSeverity[randomIndex];
+    }
 }

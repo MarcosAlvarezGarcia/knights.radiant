@@ -50,7 +50,7 @@ public class TaskController {
             @PathVariable Long id,
             @RequestParam Long progress
     ) {
-        log.info("setBooKClassification");
+        log.info("setTaskProgress");
         return ResponseEntity.ok(taskMapper.toResponse(taskService.setProgress(id, progress)));
     }
 
