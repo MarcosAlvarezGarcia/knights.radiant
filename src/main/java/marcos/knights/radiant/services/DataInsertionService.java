@@ -2,12 +2,14 @@ package marcos.knights.radiant.services;
 
 
 import lombok.RequiredArgsConstructor;
+import marcos.knights.radiant.dtos.user.UserDtoCreate;
 import marcos.knights.radiant.models.*;
 import marcos.knights.radiant.services.message.MessageService;
 import marcos.knights.radiant.services.mission.MissionService;
 import marcos.knights.radiant.services.radiantOrder.RadiantOrderService;
 import marcos.knights.radiant.services.surge.SurgeService;
 import marcos.knights.radiant.services.task.TaskService;
+import marcos.knights.radiant.services.user.UserService;
 import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,7 @@ public class DataInsertionService {
     private final MessageService messageService;
     private final TaskService taskService;
     private final MissionService missionService;
+    private final UserService userService;
 
     private final Faker faker = new Faker(new Locale("es-ES"));
 
@@ -263,14 +266,25 @@ public class DataInsertionService {
             missionService.save(mission);
         }
     }
-    public static String generateRandomSeverity(){
-        String[] possibleSeverity = {
-                "Leve",
-                "Moderado",
-                "Alto",
-                "Urgente"
-        };
-        int randomIndex = (int) (Math.random() * possibleSeverity.length);
-        return possibleSeverity[randomIndex];
+    public void createFakeUsers(int amount) {
+        if (amount <= 0) return;
+
+        // One admin
+        UserDtoCreate admin = new UserDtoCreate(
+                "admin",
+                "admin",
+                Role.NO_IDEAL
+        );
+        userService.create(admin);
+
+        // n-1 users
+        for (int i = 0; i < amount-1; i++) {
+            UserDtoCreate user = new UserDtoCreate(
+                    faker.internet().safeEmailAddress(),
+                    faker.internet().password(),
+                    Role.NO_IDEAL
+            );
+            userService.create(user);
+        }
     }
 }
