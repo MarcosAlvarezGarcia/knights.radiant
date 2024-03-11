@@ -2,6 +2,7 @@ package marcos.knights.radiant.dtos.mission;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import marcos.knights.radiant.models.Message;
 import marcos.knights.radiant.models.Task;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class MissionResponseDto {
     private String title;
     private String description;
     private final List<Task> tasks;
+    private final List<Message> messages;
     private String severity;
     private String difficulty;
     private String estimatedTime;

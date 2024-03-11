@@ -253,6 +253,7 @@ public class DataInsertionService {
                     faker.lorem().sentence(1, 3),
                     faker.lorem().sentence(10, 10),
                     null,
+                    null,
                     severities[randomSeverity],
                     difficulties[randomDifficulty],
                     faker.lorem().sentence(2, 10),

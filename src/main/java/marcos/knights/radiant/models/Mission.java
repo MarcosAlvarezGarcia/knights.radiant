@@ -19,6 +19,8 @@ public class Mission {
     private String description;
     @OneToMany
     private List<Task> tasks;
+    @OneToMany
+    private List<Message> messages;
     private String severity;
     private String difficulty;
     private String estimatedTime;
