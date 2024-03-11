@@ -7,6 +7,7 @@ import marcos.knights.radiant.dtos.mission.MissionResponseDto;
 import marcos.knights.radiant.dtos.task.TaskResponseDto;
 import marcos.knights.radiant.mappers.MissionMapper;
 import marcos.knights.radiant.models.Mission;
+import marcos.knights.radiant.models.Task;
 import marcos.knights.radiant.services.mission.MissionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -62,6 +63,15 @@ public class MissionController {
     ) {
         log.info("setMissionActive");
         return ResponseEntity.ok(missionMapper.toResponse(missionService.setActive(id, active)));
+    }
+
+    @PatchMapping("/addTaskToMission/{id}")
+    public ResponseEntity<MissionResponseDto> addTaskToMission(
+            @PathVariable Long id,
+            @RequestParam Long taskId
+    ) {
+        log.info("addTaskToMission");
+        return ResponseEntity.ok(missionMapper.toResponse(missionService.addTaskToMission(id, taskId)));
     }
 
     @PatchMapping("/setDone/{id}")

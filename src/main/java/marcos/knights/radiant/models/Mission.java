@@ -1,12 +1,11 @@
 package marcos.knights.radiant.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -18,6 +17,8 @@ public class Mission {
     private Long id;
     private String title;
     private String description;
+    @OneToMany
+    private List<Task> tasks;
     private String severity;
     private String difficulty;
     private String estimatedTime;

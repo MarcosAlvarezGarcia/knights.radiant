@@ -2,8 +2,9 @@ package marcos.knights.radiant.services.mission;
 
 import lombok.extern.slf4j.Slf4j;
 import marcos.knights.radiant.models.Mission;
+import marcos.knights.radiant.models.Task;
 import marcos.knights.radiant.repositories.MissionRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import marcos.knights.radiant.repositories.TaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,10 +14,21 @@ import java.util.List;
 public class MissionServiceImpl implements MissionService {
 
     private final MissionRepository missionRepository;
+    private final TaskRepository taskRepository;
 
-    @Autowired
-    public MissionServiceImpl(MissionRepository missionRepository) {
+    public MissionServiceImpl(MissionRepository missionRepository, TaskRepository taskRepository) {
         this.missionRepository = missionRepository;
+        this.taskRepository = taskRepository;
+    }
+
+    @Override
+    public Mission addTaskToMission(Long id, Long taskId) {
+        Mission missionUpdated = this.findById(id);
+        Task newTask = taskRepository.findById(taskId).orElseThrow();
+        List<Task> tasks = missionUpdated.getTasks();
+        tasks.add(newTask);
+        missionUpdated.setTasks(tasks);
+        return missionRepository.save(missionUpdated);
     }
 
     @Override
@@ -68,6 +80,7 @@ public class MissionServiceImpl implements MissionService {
         // Actualizamos los datos
         updated.setTitle(mission.getTitle());
         updated.setDescription(mission.getDescription());
+        updated.setTasks(mission.getTasks());
         updated.setSeverity(mission.getSeverity());
         updated.setDifficulty(mission.getDifficulty());
         updated.setEstimatedTime(mission.getEstimatedTime());

@@ -1,10 +1,12 @@
 package marcos.knights.radiant.services.mission;
 
 import marcos.knights.radiant.models.Mission;
+import marcos.knights.radiant.models.Task;
 
 import java.util.List;
 
 public interface MissionService {
+    Mission addTaskToMission(Long id, Long taskId);
     void deleteById(Long id);
     List<Mission> findAll();
     Mission findById(Long id);
