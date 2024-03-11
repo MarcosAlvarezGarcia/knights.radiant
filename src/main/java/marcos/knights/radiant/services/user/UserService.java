@@ -1,5 +1,7 @@
 package marcos.knights.radiant.services.user;
 
+import marcos.knights.radiant.models.RadiantOrder;
+import marcos.knights.radiant.services.radiantOrder.RadiantOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -26,12 +28,14 @@ public class UserService implements UserDetailsService {
     private final JwtTokenUtils tokenUtils;
     private final UserMapper mapper;
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+    private final RadiantOrderService radiantOrderService;
 
     @Autowired
-    public UserService(UserRepository repository, JwtTokenUtils tokenUtils, UserMapper mapper) {
+    public UserService(UserRepository repository, JwtTokenUtils tokenUtils, UserMapper mapper, RadiantOrderService radiantOrderService) {
         this.repository = repository;
         this.tokenUtils = tokenUtils;
         this.mapper = mapper;
+        this.radiantOrderService = radiantOrderService;
     }
 
     @Override
@@ -52,7 +56,7 @@ public class UserService implements UserDetailsService {
                     "There's already an account linked to this email.");
         }
 
-        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), Role.NO_IDEAL));
+        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), null, Role.NO_IDEAL));
         return new UserDtoWithToken(
                 mapper.toDto(saved),
                 tokenUtils.create(saved)
@@ -66,7 +70,7 @@ public class UserService implements UserDetailsService {
                     "There's already an account linked to this email.");
         }
 
-        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), dto.getRole()));
+        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), null, dto.getRole()));
         return new UserDtoWithToken(
                 mapper.toDto(saved),
                 tokenUtils.create(saved)
@@ -101,6 +105,18 @@ public class UserService implements UserDetailsService {
         return repository.save(user);
     }
 
+    public UserDto setRadiantOrder(Long id, Long radiantOrderId) {
+        User user = repository.findById(id)
+                .orElseThrow(() -> new UserException.UserNotFoundException(
+                        "User with ID " + id + " not found."));
+        RadiantOrder radiantOrder = radiantOrderService.findById(radiantOrderId);
+        user.setRadiantOrder(radiantOrder);
+
+        User saved = repository.save(new User(user.getId(), user.getUsername(),
+                encoder.encode(user.getPassword()), user.getRadiantOrder(), user.getRole()));
+        return mapper.toDto(saved);
+    }
+
     public UserDto updateSelf(Long id, UserDtoUpdate dto) {
         User user = repository.findById(id)
                 .orElseThrow(() -> new UserException.UserNotFoundException(
@@ -112,7 +128,7 @@ public class UserService implements UserDetailsService {
         }
 
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                encoder.encode(dto.getNewPassword()), user.getRole()));
+                encoder.encode(dto.getNewPassword()), user.getRadiantOrder(), user.getRole()));
         return mapper.toDto(saved);
     }
 
@@ -127,7 +143,7 @@ public class UserService implements UserDetailsService {
         }
 
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                encoder.encode(dto.getNewPassword()), user.getRole()));
+                encoder.encode(dto.getNewPassword()), user.getRadiantOrder(), user.getRole()));
         return mapper.toDto(saved);
     }
 

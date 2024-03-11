@@ -22,6 +22,8 @@ public class User implements UserDetails {
     private Long id;
     private String userName;
     private String userPassword;
+    @ManyToOne
+    private RadiantOrder radiantOrder;
     private Role role;
 
     @Override

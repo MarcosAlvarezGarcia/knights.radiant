@@ -3,6 +3,7 @@ package marcos.knights.radiant.controllers;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import marcos.knights.radiant.dtos.mission.MissionResponseDto;
+import marcos.knights.radiant.dtos.task.TaskResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
@@ -81,6 +82,15 @@ public class UserController {
     ) {
         log.info("find by ID " + id);
         return ResponseEntity.ok(service.findUserById(id));
+    }
+
+    @PatchMapping("/setRadiantOrder")
+    public ResponseEntity<UserDto> setRadiantOrder(
+            @AuthenticationPrincipal User user,
+            @RequestParam Long radiantOrderId
+    ) {
+        log.info("setRadiantOrder");
+        return ResponseEntity.ok(service.setRadiantOrder(user.getId(), radiantOrderId));
     }
 
     @PostMapping("/create")

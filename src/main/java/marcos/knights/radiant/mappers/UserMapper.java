@@ -18,13 +18,14 @@ public class UserMapper {
         if (user.isPresent() || !Objects.equals(dto.getPassword(), dto.getRepeatPassword())) {
             return null;
         }
-        else return new User(null, dto.getEmail(), dto.getPassword(), Role.NO_IDEAL);
+        else return new User(null, dto.getEmail(), dto.getPassword(), null, Role.NO_IDEAL);
     }
 
     public UserDto toDto(User entity) {
         return new UserDto(
                 entity.getId(),
                 entity.getUsername(),
+                entity.getRadiantOrder(),
                 entity.getRole()
         );
     }
@@ -36,6 +37,7 @@ public class UserMapper {
     public User toModelfromRequestDto(Long categoryId) {
         return new User(
                 categoryId,
+                null,
                 null,
                 null,
                 null
