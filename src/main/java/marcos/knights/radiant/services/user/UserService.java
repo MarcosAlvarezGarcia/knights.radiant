@@ -117,6 +117,16 @@ public class UserService implements UserDetailsService {
         return mapper.toDto(saved);
     }
 
+    public UserDto changeUserRole(Long id, Role role) {
+        User user = repository.findById(id)
+                .orElseThrow(() -> new UserException.UserNotFoundException(
+                        "User with ID " + id + " not found."));
+        user.setRole(role);
+        User saved = repository.save(new User(user.getId(), user.getUsername(),
+                encoder.encode(user.getPassword()), user.getRadiantOrder(), user.getRole()));
+        return mapper.toDto(saved);
+    }
+
     public UserDto updateSelf(Long id, UserDtoUpdate dto) {
         User user = repository.findById(id)
                 .orElseThrow(() -> new UserException.UserNotFoundException(

@@ -115,15 +115,15 @@ public class DataInsertionService {
                 "Willshapers generally subscribe to a philosophy that all people should be free to make their own choices.",
                 "Those who join the Stonewards generally subscribe to a philosophy of team dynamics, on learning to work with others, and on being there for those who need them.",
                 "While each order of Radiants contains a variety of personalities within it, those who join the Bondsmiths generally subscribe to a philosophy of peace and unity."
- };
+        };
         String[] OrdersAttributes = {
                 "Protecting and leading",
                 "Just and confident",
-                "Brave and obedient.",
-                "Loving and healing.",
-                "Learned and giving.",
-                "Creative and honest.",
-                "Wise and careful.",
+                "Brave and obedient",
+                "Loving and healing",
+                "Learned and giving",
+                "Creative and honest",
+                "Wise and careful",
                 "Resolute and builder",
                 "Dependable and resourceful",
                 "Pious and guiding"
@@ -212,6 +212,7 @@ public class DataInsertionService {
         if(amount <= 0) return;
         for(int i = 0; i < amount; i++){
             Message message = new Message(
+                    null,
                     null,
                     faker.lorem().sentence(1, 3),
                     faker.lorem().sentence(10, 10)

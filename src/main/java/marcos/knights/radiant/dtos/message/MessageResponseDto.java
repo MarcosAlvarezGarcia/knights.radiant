@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 public class MessageResponseDto {
     private Long id;
+    private Long userId;
     private String title;
     private String content;
 }

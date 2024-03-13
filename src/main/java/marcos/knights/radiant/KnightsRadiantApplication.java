@@ -28,12 +28,12 @@ public class KnightsRadiantApplication {
 	@Bean
 	public CommandLineRunner init(DataInsertionService service) {
 		return args -> {
-			service.createSurges(10);
-			service.createOrders(10);
-			service.createMessages(20);
+			//service.createSurges(10);
+			//service.createOrders(10);
+			//service.createMessages(20);
 			service.createTasks(20);
 			service.createMissions(5);
-			service.createFakeUsers(10);
+			//service.createFakeUsers(10);
 		};
 	}
 }

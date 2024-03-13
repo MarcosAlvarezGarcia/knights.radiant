@@ -13,6 +13,7 @@ public class MessageMapper {
     public MessageResponseDto toResponse(Message message) {
         return new MessageResponseDto(
                 message.getId(),
+                message.getUserId(),
                 message.getTitle(),
                 message.getContent()
         );
@@ -28,6 +29,7 @@ public class MessageMapper {
     public Message toModel(MessageRequestDto messageRequestDto) {
         return new Message(
             0L,
+            messageRequestDto.getUserId(),
             messageRequestDto.getTitle(),
             messageRequestDto.getContent()
         );

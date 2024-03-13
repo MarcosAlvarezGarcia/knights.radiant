@@ -25,7 +25,7 @@ public class JwtTokenUtils {
                 .withHeader(map)
                 .withClaim("username", user.getUsername())
                 .withClaim("role", user.getRole().name())
-                .withIssuer("ConnectedReads")
+                .withIssuer("KnightsRadiant")
                 .withExpiresAt(new Date(System.currentTimeMillis() + (24 * 60 * 60 * 1_000) * 2)) // 2 days
                 .sign(Algorithm.HMAC512(algorithmSecret));
     }

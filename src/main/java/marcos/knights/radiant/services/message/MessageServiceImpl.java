@@ -45,6 +45,7 @@ public class MessageServiceImpl implements MessageService {
         Message updated = this.findById(id);
 
         // Actualizamos los datos
+        updated.setUserId(message.getUserId());
         updated.setContent(message.getTitle());
         updated.setContent(message.getContent());
 

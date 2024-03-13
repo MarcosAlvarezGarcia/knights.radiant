@@ -84,6 +84,15 @@ public class UserController {
         return ResponseEntity.ok(service.findUserById(id));
     }
 
+    @PatchMapping("/changeUserRole")
+    public ResponseEntity<UserDto> changeUserRole(
+            @AuthenticationPrincipal User user,
+            @RequestParam Role role
+    ) {
+        log.info("changeUserRole");
+        return ResponseEntity.ok(service.changeUserRole(user.getId(), role));
+    }
+
     @PatchMapping("/setRadiantOrder")
     public ResponseEntity<UserDto> setRadiantOrder(
             @AuthenticationPrincipal User user,
