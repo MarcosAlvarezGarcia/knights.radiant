@@ -24,7 +24,7 @@ public class MissionServiceImpl implements MissionService {
         this.taskRepository = taskRepository;
         this.messageRepository = messageRepository;
     }
-
+    /*
     @Override
     public Mission addMessageToMission(Long id, Long messageId) {
         Mission missionUpdated = this.findById(id);
@@ -34,7 +34,7 @@ public class MissionServiceImpl implements MissionService {
         missionUpdated.setMessages(messages);
         return missionRepository.save(missionUpdated);
     }
-
+    */
     @Override
     public Mission addTaskToMission(Long id, Long taskId) {
         Mission missionUpdated = this.findById(id);
@@ -94,13 +94,13 @@ public class MissionServiceImpl implements MissionService {
         // Actualizamos los datos
         updated.setTitle(mission.getTitle());
         updated.setDescription(mission.getDescription());
-        updated.setTasks(mission.getTasks());
-        updated.setMessages(mission.getMessages());
         updated.setSeverity(mission.getSeverity());
         updated.setDifficulty(mission.getDifficulty());
         updated.setEstimatedTime(mission.getEstimatedTime());
         updated.setActive(mission.getActive());
         updated.setDone(mission.getDone());
+        updated.setTasks(mission.getTasks());
+        //updated.setMessages(mission.getMessages());
 
         // Guardamos los cambios
         return missionRepository.save(updated);

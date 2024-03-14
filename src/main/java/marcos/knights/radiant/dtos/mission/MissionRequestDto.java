@@ -12,8 +12,6 @@ import java.util.List;
 public class MissionRequestDto {
     private final String title;
     private final String description;
-    private final List<Task> tasks;
-    private final List<Message> messages;
     private final String severity;
     private final String difficulty;
     private final String estimatedTime;

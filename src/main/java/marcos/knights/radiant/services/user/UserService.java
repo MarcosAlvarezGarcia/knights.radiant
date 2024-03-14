@@ -56,7 +56,7 @@ public class UserService implements UserDetailsService {
                     "There's already an account linked to this email.");
         }
 
-        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), null, Role.NO_IDEAL));
+        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), Role.NO_IDEAL, null));
         return new UserDtoWithToken(
                 mapper.toDto(saved),
                 tokenUtils.create(saved)
@@ -70,7 +70,7 @@ public class UserService implements UserDetailsService {
                     "There's already an account linked to this email.");
         }
 
-        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), null, dto.getRole()));
+        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), dto.getRole(), null));
         return new UserDtoWithToken(
                 mapper.toDto(saved),
                 tokenUtils.create(saved)
@@ -113,7 +113,7 @@ public class UserService implements UserDetailsService {
         user.setRadiantOrder(radiantOrder);
 
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                encoder.encode(user.getPassword()), user.getRadiantOrder(), user.getRole()));
+                        encoder.encode(user.getPassword()), user.getRole(), user.getRadiantOrder()));
         return mapper.toDto(saved);
     }
 
@@ -123,7 +123,7 @@ public class UserService implements UserDetailsService {
                         "User with ID " + id + " not found."));
         user.setRole(role);
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                encoder.encode(user.getPassword()), user.getRadiantOrder(), user.getRole()));
+                        encoder.encode(user.getPassword()), user.getRole(), user.getRadiantOrder()));
         return mapper.toDto(saved);
     }
 
@@ -138,7 +138,7 @@ public class UserService implements UserDetailsService {
         }
 
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                encoder.encode(dto.getNewPassword()), user.getRadiantOrder(), user.getRole()));
+                        encoder.encode(dto.getNewPassword()), user.getRole(), user.getRadiantOrder()));
         return mapper.toDto(saved);
     }
 
@@ -153,7 +153,7 @@ public class UserService implements UserDetailsService {
         }
 
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                encoder.encode(dto.getNewPassword()), user.getRadiantOrder(), user.getRole()));
+                        encoder.encode(dto.getNewPassword()), user.getRole(), user.getRadiantOrder()));
         return mapper.toDto(saved);
     }
 

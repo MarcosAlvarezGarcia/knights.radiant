@@ -17,4 +17,6 @@ public class Task {
     private String title;
     private String description;
     private Long progress;
+    //@ManyToOne
+    //private Mission mission;
 }

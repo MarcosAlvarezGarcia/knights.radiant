@@ -10,14 +10,14 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class MissionResponseDto {
-    private Long id;
-    private String title;
-    private String description;
-    private final List<Task> tasks;
-    private final List<Message> messages;
-    private String severity;
-    private String difficulty;
-    private String estimatedTime;
-    private Boolean active;
-    private Boolean done;
+    private final Long id;
+    private final String title;
+    private final String description;
+    private final String severity;
+    private final String difficulty;
+    private final String estimatedTime;
+    private final Boolean active;
+    private final Boolean done;
+    private List<Task> tasks;
+    //private final List<Message> messages;
 }

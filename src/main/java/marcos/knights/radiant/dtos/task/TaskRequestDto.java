@@ -9,4 +9,5 @@ public class TaskRequestDto {
     private final String title;
     private final String description;
     private final Long progress;
+    //private final Long missionId;
 }

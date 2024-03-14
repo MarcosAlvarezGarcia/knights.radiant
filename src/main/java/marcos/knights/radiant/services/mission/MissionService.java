@@ -6,7 +6,7 @@ import marcos.knights.radiant.models.Task;
 import java.util.List;
 
 public interface MissionService {
-    Mission addMessageToMission(Long id, Long messageId);
+    //Mission addMessageToMission(Long id, Long messageId);
     Mission addTaskToMission(Long id, Long taskId);
     void deleteById(Long id);
     List<Mission> findAll();

@@ -3,6 +3,7 @@ package marcos.knights.radiant.mappers;
 import marcos.knights.radiant.dtos.task.TaskRequestDto;
 import marcos.knights.radiant.dtos.task.TaskResponseDto;
 import marcos.knights.radiant.models.Task;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -10,12 +11,20 @@ import java.util.List;
 @Component
 public class TaskMapper {
 
+    private final MissionMapper missionMapper;
+
+    @Autowired
+    public TaskMapper(MissionMapper missionMapper){
+        this.missionMapper = missionMapper;
+    }
+
     public TaskResponseDto toResponse(Task task) {
         return new TaskResponseDto(
                 task.getId(),
                 task.getTitle(),
                 task.getDescription(),
                 task.getProgress()
+                //task.getMission()
         );
     }
 
@@ -32,6 +41,8 @@ public class TaskMapper {
             taskRequestDto.getTitle(),
             taskRequestDto.getDescription(),
             taskRequestDto.getProgress()
+            //taskRequestDto.getMissionId() != null ?
+            //        missionMapper.toModelfromRequestDto(taskRequestDto.getMissionId()) : null
         );
     }
 }

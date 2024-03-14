@@ -18,13 +18,13 @@ public class Mission {
     private Long id;
     private String title;
     private String description;
-    @OneToMany
-    private List<Task> tasks;
-    @OneToMany
-    private List<Message> messages;
     private String severity;
     private String difficulty;
     private String estimatedTime;
     private Boolean active;
     private Boolean done;
+    @OneToMany
+    private List<Task> tasks;
+    //@OneToMany
+    //private List<Message> messages;
 }

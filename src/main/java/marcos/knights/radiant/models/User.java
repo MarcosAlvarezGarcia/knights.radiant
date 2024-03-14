@@ -22,9 +22,9 @@ public class User implements UserDetails {
     private Long id;
     private String userName;
     private String userPassword;
+    private Role role;
     @ManyToOne
     private RadiantOrder radiantOrder;
-    private Role role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

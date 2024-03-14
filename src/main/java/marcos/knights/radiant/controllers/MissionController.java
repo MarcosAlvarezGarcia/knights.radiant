@@ -64,7 +64,7 @@ public class MissionController {
         log.info("setMissionActive");
         return ResponseEntity.ok(missionMapper.toResponse(missionService.setActive(id, active)));
     }
-
+    /*
     @PatchMapping("/addMessageToMission/{id}")
     public ResponseEntity<MissionResponseDto> addMessageToMission(
             @PathVariable Long id,
@@ -73,7 +73,7 @@ public class MissionController {
         log.info("addMessageToMission");
         return ResponseEntity.ok(missionMapper.toResponse(missionService.addMessageToMission(id, messageId)));
     }
-
+    */
     @PatchMapping("/addTaskToMission/{id}")
     public ResponseEntity<MissionResponseDto> addTaskToMission(
             @PathVariable Long id,

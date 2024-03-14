@@ -229,6 +229,7 @@ public class DataInsertionService {
                     faker.lorem().sentence(1, 3),
                     faker.lorem().sentence(10, 10),
                     (long) faker.number().numberBetween(0, 100)
+                    //null
             );
             taskService.save(task);
         }
@@ -248,6 +249,7 @@ public class DataInsertionService {
                 "Hard",
                 "Very hard"
         };
+        List<Task> tasks = taskService.findAll();
         if(amount <= 0) return;
         for(int i = 0; i < amount; i++){
             int randomSeverity = (int) (Math.random() * severities.length);
@@ -256,13 +258,12 @@ public class DataInsertionService {
                     null,
                     faker.lorem().sentence(1, 3),
                     faker.lorem().sentence(10, 10),
-                    null,
-                    null,
                     severities[randomSeverity],
                     difficulties[randomDifficulty],
                     faker.lorem().sentence(2, 10),
                     false,
-                    false
+                    false,
+                    tasks
                     );
             missionService.save(mission);
         }

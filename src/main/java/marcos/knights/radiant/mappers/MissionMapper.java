@@ -15,13 +15,13 @@ public class MissionMapper {
                 mission.getId(),
                 mission.getTitle(),
                 mission.getDescription(),
-                mission.getTasks(),
-                mission.getMessages(),
                 mission.getSeverity(),
                 mission.getDifficulty(),
                 mission.getEstimatedTime(),
                 mission.getActive(),
-                mission.getDone()
+                mission.getDone(),
+                mission.getTasks()
+                //mission.getMessages()
         );
     }
 
@@ -37,13 +37,29 @@ public class MissionMapper {
             0L,
             missionRequestDto.getTitle(),
             missionRequestDto.getDescription(),
-            missionRequestDto.getTasks(),
-            missionRequestDto.getMessages(),
             missionRequestDto.getSeverity(),
             missionRequestDto.getDifficulty(),
             missionRequestDto.getEstimatedTime(),
             missionRequestDto.getActive(),
-            missionRequestDto.getDone()
+            missionRequestDto.getDone(),
+            null
+            //missionRequestDto.getTasks()
+            //missionRequestDto.getMessages()
         );
     }
+
+    public Mission toModelfromRequestDto(Long missionId) {
+        return new Mission(
+                missionId,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+    }
+
 }

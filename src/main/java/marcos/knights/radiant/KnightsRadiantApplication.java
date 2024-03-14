@@ -31,8 +31,8 @@ public class KnightsRadiantApplication {
 			//service.createSurges(10);
 			//service.createOrders(10);
 			//service.createMessages(20);
-			service.createTasks(20);
-			service.createMissions(5);
+			//service.createTasks(20);
+			//service.createMissions(5);
 			//service.createFakeUsers(10);
 		};
 	}
