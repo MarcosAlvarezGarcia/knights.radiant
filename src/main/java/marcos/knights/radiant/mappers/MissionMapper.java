@@ -20,7 +20,8 @@ public class MissionMapper {
                 mission.getEstimatedTime(),
                 mission.getActive(),
                 mission.getDone(),
-                mission.getTasks()
+                mission.getTasks(),
+                mission.getUsers()
                 //mission.getMessages()
         );
     }
@@ -42,6 +43,7 @@ public class MissionMapper {
             missionRequestDto.getEstimatedTime(),
             missionRequestDto.getActive(),
             missionRequestDto.getDone(),
+            null,
             null
             //missionRequestDto.getTasks()
             //missionRequestDto.getMessages()
@@ -51,6 +53,7 @@ public class MissionMapper {
     public Mission toModelfromRequestDto(Long missionId) {
         return new Mission(
                 missionId,
+                null,
                 null,
                 null,
                 null,

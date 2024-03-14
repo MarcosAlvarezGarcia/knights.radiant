@@ -83,6 +83,24 @@ public class MissionController {
         return ResponseEntity.ok(missionMapper.toResponse(missionService.addTaskToMission(id, taskId)));
     }
 
+    @PatchMapping("/addUserToMission/{id}")
+    public ResponseEntity<MissionResponseDto> addUserToMission(
+            @PathVariable Long id,
+            @RequestParam Long userId
+    ) {
+        log.info("addUserToMission");
+        return ResponseEntity.ok(missionMapper.toResponse(missionService.addUserToMission(id, userId)));
+    }
+
+    @PatchMapping("/removeUserFromMission/{id}")
+    public ResponseEntity<MissionResponseDto> removeUserFromMission(
+            @PathVariable Long id,
+            @RequestParam Long userId
+    ) {
+        log.info("removeUserFromMission");
+        return ResponseEntity.ok(missionMapper.toResponse(missionService.removeUserFromMission(id, userId)));
+    }
+
     @PatchMapping("/setDone/{id}")
     public ResponseEntity<MissionResponseDto> setMissionDone(
             @PathVariable Long id,

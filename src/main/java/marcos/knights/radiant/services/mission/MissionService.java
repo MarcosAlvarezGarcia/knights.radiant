@@ -8,6 +8,8 @@ import java.util.List;
 public interface MissionService {
     //Mission addMessageToMission(Long id, Long messageId);
     Mission addTaskToMission(Long id, Long taskId);
+    Mission addUserToMission(Long id, Long userId);
+    Mission removeUserFromMission(Long id, Long userId);
     void deleteById(Long id);
     List<Mission> findAll();
     Mission findById(Long id);

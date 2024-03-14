@@ -25,6 +25,8 @@ public class Mission {
     private Boolean done;
     @OneToMany
     private List<Task> tasks;
+    @OneToMany
+    private List<User> users;
     //@OneToMany
     //private List<Message> messages;
 }

@@ -263,7 +263,8 @@ public class DataInsertionService {
                     faker.lorem().sentence(2, 10),
                     false,
                     false,
-                    tasks
+                    null,
+                    null
                     );
             missionService.save(mission);
         }

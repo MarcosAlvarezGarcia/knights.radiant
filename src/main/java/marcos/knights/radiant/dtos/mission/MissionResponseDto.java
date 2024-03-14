@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import marcos.knights.radiant.models.Message;
 import marcos.knights.radiant.models.Task;
+import marcos.knights.radiant.models.User;
 
 import java.util.List;
 
@@ -19,5 +20,6 @@ public class MissionResponseDto {
     private final Boolean active;
     private final Boolean done;
     private List<Task> tasks;
+    private List<User> users;
     //private final List<Message> messages;
 }
