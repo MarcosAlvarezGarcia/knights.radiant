@@ -26,6 +26,8 @@ public class Mission {
     @OneToMany
     private List<Task> tasks;
     @OneToMany
+    private List<MissionRequirement> requirements;
+    @OneToMany
     private List<User> users;
     //@OneToMany
     //private List<Message> messages;
