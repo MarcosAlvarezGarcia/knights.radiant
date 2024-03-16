@@ -134,7 +134,7 @@ public class MissionServiceImpl implements MissionService {
         updated.setTasks(mission.getTasks());
         updated.setRequirements(mission.getRequirements());
         updated.setUsers(mission.getUsers());
-        updated.setMessages(mission.getMessages());
+        //updated.setMessages(mission.getMessages());
 
         // Guardamos los cambios
         return missionRepository.save(updated);

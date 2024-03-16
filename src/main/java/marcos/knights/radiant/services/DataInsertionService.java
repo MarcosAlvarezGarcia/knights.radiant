@@ -265,7 +265,6 @@ public class DataInsertionService {
                     false,
                     null,
                     null,
-                    null,
                     null
                     );
             missionService.save(mission);

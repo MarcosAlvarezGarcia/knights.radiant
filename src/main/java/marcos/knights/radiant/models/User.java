@@ -23,8 +23,6 @@ public class User implements UserDetails {
     private String userName;
     private String userPassword;
     private Role role;
-    private Long currentMissionId;
-    private Long missionsCompleted;
     @ManyToOne
     private RadiantOrder radiantOrder;
 

@@ -93,24 +93,6 @@ public class UserController {
         return ResponseEntity.ok(service.changeUserRole(user.getId(), role));
     }
 
-    @PatchMapping("/setCurrentMissionId")
-    public ResponseEntity<UserDto> setCurrentMissionId(
-            @AuthenticationPrincipal User user,
-            @RequestParam Long missionId
-    ) {
-        log.info("setCurrentMissionId");
-        return ResponseEntity.ok(service.setCurrentMissionId(user.getId(), missionId));
-    }
-
-    @PatchMapping("/setMissionsCompleted")
-    public ResponseEntity<UserDto> setMissionsCompleted(
-            @AuthenticationPrincipal User user,
-            @RequestParam Long missionsCompleted
-    ) {
-        log.info("setMissionsCompleted");
-        return ResponseEntity.ok(service.setMissionsCompleted(user.getId(), missionsCompleted));
-    }
-
     @PatchMapping("/setRadiantOrder")
     public ResponseEntity<UserDto> setRadiantOrder(
             @AuthenticationPrincipal User user,

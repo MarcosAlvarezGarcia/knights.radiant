@@ -12,18 +12,18 @@ public class MissionMapper {
 
     public MissionResponseDto toResponse(Mission mission) {
         return new MissionResponseDto(
-            mission.getId(),
-            mission.getTitle(),
-            mission.getDescription(),
-            mission.getSeverity(),
-            mission.getDifficulty(),
-            mission.getEstimatedTime(),
-            mission.getActive(),
-            mission.getDone(),
-            mission.getTasks(),
-            mission.getRequirements(),
-            mission.getUsers(),
-            mission.getMessages()
+                mission.getId(),
+                mission.getTitle(),
+                mission.getDescription(),
+                mission.getSeverity(),
+                mission.getDifficulty(),
+                mission.getEstimatedTime(),
+                mission.getActive(),
+                mission.getDone(),
+                mission.getTasks(),
+                mission.getRequirements(),
+                mission.getUsers()
+                //mission.getMessages()
         );
     }
 
@@ -46,25 +46,23 @@ public class MissionMapper {
             missionRequestDto.getDone(),
             null,
             null,
-            null,
             null
         );
     }
 
     public Mission toModelfromRequestDto(Long missionId) {
         return new Mission(
-            missionId,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
+                missionId,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
         );
     }
 

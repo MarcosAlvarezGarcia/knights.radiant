@@ -18,18 +18,16 @@ public class UserMapper {
         if (user.isPresent() || !Objects.equals(dto.getPassword(), dto.getRepeatPassword())) {
             return null;
         }
-        else return new User(null, dto.getEmail(), dto.getPassword(), Role.NO_IDEAL, null, null, null);
+        else return new User(null, dto.getEmail(), dto.getPassword(), Role.NO_IDEAL, null);
     }
 
     public UserDto toDto(User entity) {
         return new UserDto(
                 entity.getId(),
                 entity.getUsername(),
-                entity.getRole(),
-                entity.getCurrentMissionId(),
-                entity.getMissionsCompleted(),
-                entity.getRadiantOrder()
-                );
+                entity.getRadiantOrder(),
+                entity.getRole()
+        );
     }
 
     public List<UserDto> toDto(List<User> entities) {
@@ -39,8 +37,6 @@ public class UserMapper {
     public User toModelfromRequestDto(Long categoryId) {
         return new User(
                 categoryId,
-                null,
-                null,
                 null,
                 null,
                 null,

@@ -2,7 +2,6 @@ package marcos.knights.radiant.dtos.mission;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import marcos.knights.radiant.models.Message;
 import marcos.knights.radiant.models.MissionRequirement;
 import marcos.knights.radiant.models.Task;
 import marcos.knights.radiant.models.User;
@@ -23,5 +22,5 @@ public class MissionResponseDto {
     private List<Task> tasks;
     private List<MissionRequirement> requirements;
     private List<User> users;
-    private List<Message> messages;
+    //private final List<Message> messages;
 }
