@@ -1,6 +1,8 @@
 package marcos.knights.radiant.services.user;
 
+import marcos.knights.radiant.models.Mission;
 import marcos.knights.radiant.models.RadiantOrder;
+import marcos.knights.radiant.services.mission.MissionService;
 import marcos.knights.radiant.services.radiantOrder.RadiantOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,13 +31,15 @@ public class UserService implements UserDetailsService {
     private final UserMapper mapper;
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
     private final RadiantOrderService radiantOrderService;
+    private final MissionService missionService;
 
     @Autowired
-    public UserService(UserRepository repository, JwtTokenUtils tokenUtils, UserMapper mapper, RadiantOrderService radiantOrderService) {
+    public UserService(UserRepository repository, JwtTokenUtils tokenUtils, UserMapper mapper, RadiantOrderService radiantOrderService, MissionService missionService) {
         this.repository = repository;
         this.tokenUtils = tokenUtils;
         this.mapper = mapper;
         this.radiantOrderService = radiantOrderService;
+        this.missionService = missionService;
     }
 
     @Override
@@ -56,7 +60,7 @@ public class UserService implements UserDetailsService {
                     "There's already an account linked to this email.");
         }
 
-        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), Role.NO_IDEAL, null));
+        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), Role.NO_IDEAL, null, null, null));
         return new UserDtoWithToken(
                 mapper.toDto(saved),
                 tokenUtils.create(saved)
@@ -70,7 +74,7 @@ public class UserService implements UserDetailsService {
                     "There's already an account linked to this email.");
         }
 
-        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), dto.getRole(), null));
+        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), dto.getRole(), null, null, null));
         return new UserDtoWithToken(
                 mapper.toDto(saved),
                 tokenUtils.create(saved)
@@ -105,6 +109,36 @@ public class UserService implements UserDetailsService {
         return repository.save(user);
     }
 
+    public UserDto changeUserRole(Long id, Role role) {
+        User user = repository.findById(id)
+                .orElseThrow(() -> new UserException.UserNotFoundException(
+                        "User with ID " + id + " not found."));
+        user.setRole(role);
+        User saved = repository.save(new User(user.getId(), user.getUsername(),
+                        encoder.encode(user.getPassword()), user.getRole(), user.getCurrentMissionId(), user.getMissionsCompleted(), user.getRadiantOrder()));
+        return mapper.toDto(saved);
+    }
+
+    public UserDto setCurrentMissionId(Long id, Long missionId) {
+        User user = repository.findById(id)
+                .orElseThrow(() -> new UserException.UserNotFoundException(
+                        "User with ID " + id + " not found."));
+        user.setCurrentMissionId(missionId);
+        User saved = repository.save(new User(user.getId(), user.getUsername(),
+                encoder.encode(user.getPassword()), user.getRole(), user.getCurrentMissionId(), user.getMissionsCompleted(), user.getRadiantOrder()));
+        return mapper.toDto(saved);
+    }
+
+    public UserDto setMissionsCompleted(Long id, Long missionsCompleted) {
+        User user = repository.findById(id)
+                .orElseThrow(() -> new UserException.UserNotFoundException(
+                        "User with ID " + id + " not found."));
+        user.setMissionsCompleted(missionsCompleted);
+        User saved = repository.save(new User(user.getId(), user.getUsername(),
+                encoder.encode(user.getPassword()), user.getRole(), user.getCurrentMissionId(), user.getMissionsCompleted(), user.getRadiantOrder()));
+        return mapper.toDto(saved);
+    }
+
     public UserDto setRadiantOrder(Long id, Long radiantOrderId) {
         User user = repository.findById(id)
                 .orElseThrow(() -> new UserException.UserNotFoundException(
@@ -113,17 +147,7 @@ public class UserService implements UserDetailsService {
         user.setRadiantOrder(radiantOrder);
 
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                        encoder.encode(user.getPassword()), user.getRole(), user.getRadiantOrder()));
-        return mapper.toDto(saved);
-    }
-
-    public UserDto changeUserRole(Long id, Role role) {
-        User user = repository.findById(id)
-                .orElseThrow(() -> new UserException.UserNotFoundException(
-                        "User with ID " + id + " not found."));
-        user.setRole(role);
-        User saved = repository.save(new User(user.getId(), user.getUsername(),
-                        encoder.encode(user.getPassword()), user.getRole(), user.getRadiantOrder()));
+                encoder.encode(user.getPassword()), user.getRole(), user.getCurrentMissionId(), user.getMissionsCompleted(), user.getRadiantOrder()));
         return mapper.toDto(saved);
     }
 
@@ -138,7 +162,7 @@ public class UserService implements UserDetailsService {
         }
 
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                        encoder.encode(dto.getNewPassword()), user.getRole(), user.getRadiantOrder()));
+                        encoder.encode(dto.getNewPassword()), user.getRole(), user.getCurrentMissionId(), user.getMissionsCompleted(), user.getRadiantOrder()));
         return mapper.toDto(saved);
     }
 
@@ -153,7 +177,7 @@ public class UserService implements UserDetailsService {
         }
 
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                        encoder.encode(dto.getNewPassword()), user.getRole(), user.getRadiantOrder()));
+                        encoder.encode(dto.getNewPassword()), user.getRole(), user.getCurrentMissionId(), user.getMissionsCompleted(), user.getRadiantOrder()));
         return mapper.toDto(saved);
     }
 
