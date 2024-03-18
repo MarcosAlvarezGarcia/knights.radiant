@@ -12,7 +12,6 @@ import marcos.knights.radiant.models.Role;
 public class UserDto {
     private Long id;
     private String email;
-    private RadiantOrder radiantOrder;
     private Role role;
 }
 

@@ -56,7 +56,7 @@ public class UserService implements UserDetailsService {
                     "There's already an account linked to this email.");
         }
 
-        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), Role.NO_IDEAL, null));
+        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), Role.NO_IDEAL));
         return new UserDtoWithToken(
                 mapper.toDto(saved),
                 tokenUtils.create(saved)
@@ -70,7 +70,7 @@ public class UserService implements UserDetailsService {
                     "There's already an account linked to this email.");
         }
 
-        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), dto.getRole(), null));
+        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), dto.getRole()));
         return new UserDtoWithToken(
                 mapper.toDto(saved),
                 tokenUtils.create(saved)
@@ -110,10 +110,9 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new UserException.UserNotFoundException(
                         "User with ID " + id + " not found."));
         RadiantOrder radiantOrder = radiantOrderService.findById(radiantOrderId);
-        user.setRadiantOrder(radiantOrder);
 
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                        encoder.encode(user.getPassword()), user.getRole(), user.getRadiantOrder()));
+                        encoder.encode(user.getPassword()), user.getRole()));
         return mapper.toDto(saved);
     }
 
@@ -123,7 +122,7 @@ public class UserService implements UserDetailsService {
                         "User with ID " + id + " not found."));
         user.setRole(role);
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                        encoder.encode(user.getPassword()), user.getRole(), user.getRadiantOrder()));
+                        encoder.encode(user.getPassword()), user.getRole()));
         return mapper.toDto(saved);
     }
 
@@ -138,7 +137,7 @@ public class UserService implements UserDetailsService {
         }
 
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                        encoder.encode(dto.getNewPassword()), user.getRole(), user.getRadiantOrder()));
+                        encoder.encode(dto.getNewPassword()), user.getRole()));
         return mapper.toDto(saved);
     }
 
@@ -153,7 +152,7 @@ public class UserService implements UserDetailsService {
         }
 
         User saved = repository.save(new User(user.getId(), user.getUsername(),
-                        encoder.encode(dto.getNewPassword()), user.getRole(), user.getRadiantOrder()));
+                        encoder.encode(dto.getNewPassword()), user.getRole()));
         return mapper.toDto(saved);
     }
 

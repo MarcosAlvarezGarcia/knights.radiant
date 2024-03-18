@@ -22,8 +22,8 @@ public class MissionMapper {
                 mission.getDone(),
                 mission.getTasks(),
                 mission.getRequirements(),
-                mission.getUsers()
-                //mission.getMessages()
+                mission.getUsers(),
+                mission.getMessages()
         );
     }
 
@@ -46,6 +46,7 @@ public class MissionMapper {
             missionRequestDto.getDone(),
             null,
             null,
+            null,
             null
         );
     }
@@ -53,6 +54,7 @@ public class MissionMapper {
     public Mission toModelfromRequestDto(Long missionId) {
         return new Mission(
                 missionId,
+                null,
                 null,
                 null,
                 null,
