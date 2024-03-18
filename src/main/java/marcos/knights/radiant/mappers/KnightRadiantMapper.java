@@ -12,7 +12,7 @@ public class KnightRadiantMapper {
     public KnightRadiantResponseDto toResponse(KnightRadiant knightRadiant) {
         return new KnightRadiantResponseDto(
                 knightRadiant.getId(),
-                knightRadiant.getRole(),
+                knightRadiant.getIdeal(),
                 knightRadiant.getCurrentMissionId(),
                 knightRadiant.getMissionsCompleted(),
                 knightRadiant.getRadiantOrder()
@@ -29,7 +29,7 @@ public class KnightRadiantMapper {
     public KnightRadiant toModel(KnightRadiantRequestDto knightRadiantRequestDto) {
         return new KnightRadiant(
                 0L,
-                knightRadiantRequestDto.getRole(),
+                knightRadiantRequestDto.getIdeal(),
                 knightRadiantRequestDto.getCurrentMissionId(),
                 0L,
                 null

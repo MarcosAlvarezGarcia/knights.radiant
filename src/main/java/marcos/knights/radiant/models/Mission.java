@@ -18,6 +18,7 @@ public class Mission {
     private Long id;
     private String title;
     private String description;
+    private String location;
     private String severity;
     private String difficulty;
     private String estimatedTime;

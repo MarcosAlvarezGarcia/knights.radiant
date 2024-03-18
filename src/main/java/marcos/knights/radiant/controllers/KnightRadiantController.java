@@ -6,6 +6,7 @@ import marcos.knights.radiant.dtos.knightRadiant.KnightRadiantRequestDto;
 import marcos.knights.radiant.dtos.knightRadiant.KnightRadiantResponseDto;
 import marcos.knights.radiant.dtos.task.TaskResponseDto;
 import marcos.knights.radiant.mappers.KnightRadiantMapper;
+import marcos.knights.radiant.models.Ideal;
 import marcos.knights.radiant.models.KnightRadiant;
 import marcos.knights.radiant.models.Role;
 import marcos.knights.radiant.models.User;
@@ -86,10 +87,10 @@ public class KnightRadiantController {
     @PatchMapping("/setRole/{id}")
     public ResponseEntity<KnightRadiantResponseDto> setRole(
             @PathVariable Long id,
-            @RequestParam Role role
+            @RequestParam Ideal ideal
     ) {
         log.info("setRadiantOrder");
-        return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.setRole(id, role)));
+        return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.setIdeal(id, ideal)));
     }
 
     @PostMapping("/create")

@@ -1,5 +1,6 @@
 package marcos.knights.radiant.services.knightRadiant;
 
+import marcos.knights.radiant.models.Ideal;
 import marcos.knights.radiant.models.KnightRadiant;
 import marcos.knights.radiant.models.Role;
 
@@ -13,7 +14,7 @@ public interface KnightRadiantService {
     KnightRadiant setCurrentMissionIdToNull(Long id);
     KnightRadiant setMissionsCompleted(Long id);
     KnightRadiant setRadiantOrder(Long id, Long radiantOrderId);
-    KnightRadiant setRole(Long id, Role role);
+    KnightRadiant setIdeal(Long id, Ideal ideal);
     KnightRadiant save(KnightRadiant knightRadiant);
     KnightRadiant update(Long id, KnightRadiant knightRadiant);
 }

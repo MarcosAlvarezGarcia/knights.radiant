@@ -18,7 +18,7 @@ public class UserMapper {
         if (user.isPresent() || !Objects.equals(dto.getPassword(), dto.getRepeatPassword())) {
             return null;
         }
-        else return new User(null, dto.getEmail(), dto.getPassword(), Role.NO_IDEAL, null);
+        else return new User(null, dto.getEmail(), dto.getPassword(), Role.KNIGHT_RADIANT, null);
     }
 
     public UserDto toDto(User entity) {

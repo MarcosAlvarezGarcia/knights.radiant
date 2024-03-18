@@ -62,7 +62,7 @@ public class SecurityConfiguration {
                                         // POST
                                         "/knightsRadiant/missions/create"
 
-                                ).hasAnyRole("THIRD_IDEAL", "FOURTH_IDEAL", "FIFTH_IDEAL")
+                                ).hasAnyRole("KNIGHT_RADIANT", "HERALD")
 
                                 .requestMatchers(
                                     // Users
@@ -71,7 +71,7 @@ public class SecurityConfiguration {
                                         "/knightsRadiant/users/id/{id}",
                                         "/knightsRadiant/users/email/{email}"
 
-                                ).hasAnyRole("NO_IDEAL", "FIRST_IDEAL", "SECOND_IDEAL", "THIRD_IDEAL", "FOURTH_IDEAL", "FIFTH_IDEAL")
+                                ).hasAnyRole("KNIGHT_RADIANT", "HERALD")
                                 // Cualquier otra request con lo que sea (en esta caso autenticación)
                                 .anyRequest().authenticated()
                         //.anyRequest().permitAll()

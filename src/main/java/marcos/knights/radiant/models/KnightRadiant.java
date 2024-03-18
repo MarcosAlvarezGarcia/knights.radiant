@@ -14,7 +14,7 @@ public class KnightRadiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Role role;
+    private Ideal ideal;
     private Long currentMissionId;
     private Long missionsCompleted;
     @ManyToOne

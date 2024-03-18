@@ -15,7 +15,7 @@ public class SurgeMapper {
                 surge.getId(),
                 surge.getName(),
                 surge.getDescription(),
-                surge.getRole()
+                surge.getIdeal()
         );
     }
 
@@ -31,7 +31,7 @@ public class SurgeMapper {
             0L,
             surgeRequestDto.getName(),
             surgeRequestDto.getDescription(),
-            surgeRequestDto.getRole()
+            surgeRequestDto.getIdeal()
         );
     }
 }

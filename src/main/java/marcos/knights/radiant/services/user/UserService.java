@@ -59,7 +59,7 @@ public class UserService implements UserDetailsService {
         }
         Long users = (long) findAllUsers().size();
         KnightRadiant knightRadiant = knightRadiantService.findById(users+1);
-        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), Role.NO_IDEAL, knightRadiant));
+        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), Role.KNIGHT_RADIANT, knightRadiant));
         return new UserDtoWithToken(
                 mapper.toDto(saved),
                 tokenUtils.create(saved)

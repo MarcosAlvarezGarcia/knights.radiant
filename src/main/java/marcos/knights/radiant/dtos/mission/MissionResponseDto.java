@@ -15,6 +15,7 @@ public class MissionResponseDto {
     private final Long id;
     private final String title;
     private final String description;
+    private final String location;
     private final String severity;
     private final String difficulty;
     private final String estimatedTime;

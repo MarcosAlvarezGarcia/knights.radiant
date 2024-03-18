@@ -126,6 +126,7 @@ public class MissionServiceImpl implements MissionService {
         // Actualizamos los datos
         updated.setTitle(mission.getTitle());
         updated.setDescription(mission.getDescription());
+        updated.setLocation(mission.getLocation());
         updated.setSeverity(mission.getSeverity());
         updated.setDifficulty(mission.getDifficulty());
         updated.setEstimatedTime(mission.getEstimatedTime());

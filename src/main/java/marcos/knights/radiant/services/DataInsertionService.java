@@ -55,17 +55,17 @@ public class DataInsertionService {
                 "The Surge of Tension can be manipulated to alter the stiffness of an object."
         };
 
-        Role[] SurgesIdeal = {
-                Role.NO_IDEAL,
-                Role.SECOND_IDEAL,
-                Role.THIRD_IDEAL,
-                Role.FIRST_IDEAL,
-                Role.SECOND_IDEAL,
-                Role.NO_IDEAL,
-                Role.NO_IDEAL,
-                Role.SECOND_IDEAL,
-                Role.FIRST_IDEAL,
-                Role.SECOND_IDEAL
+        Ideal[] SurgesIdeal = {
+                Ideal.NO_IDEAL,
+                Ideal.SECOND_IDEAL,
+                Ideal.THIRD_IDEAL,
+                Ideal.FIRST_IDEAL,
+                Ideal.SECOND_IDEAL,
+                Ideal.NO_IDEAL,
+                Ideal.NO_IDEAL,
+                Ideal.SECOND_IDEAL,
+                Ideal.FIRST_IDEAL,
+                Ideal.SECOND_IDEAL
         };
         if(amount <= 0) return;
         for(int i = 0; i < amount; i++){
@@ -258,6 +258,7 @@ public class DataInsertionService {
                     null,
                     faker.lorem().sentence(1, 3),
                     faker.lorem().sentence(10, 10),
+                    faker.lorem().sentence(1, 20),
                     severities[randomSeverity],
                     difficulties[randomDifficulty],
                     faker.lorem().sentence(2, 10),
@@ -278,7 +279,7 @@ public class DataInsertionService {
         UserDtoCreate admin = new UserDtoCreate(
                 "admin",
                 "admin",
-                Role.NO_IDEAL
+                Role.HERALD
         );
         userService.create(admin);
 
@@ -287,7 +288,7 @@ public class DataInsertionService {
             UserDtoCreate user = new UserDtoCreate(
                     faker.internet().safeEmailAddress(),
                     faker.internet().password(),
-                    Role.NO_IDEAL
+                    Role.KNIGHT_RADIANT
             );
             userService.create(user);
         }

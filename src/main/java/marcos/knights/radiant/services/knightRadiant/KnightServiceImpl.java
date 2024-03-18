@@ -66,9 +66,9 @@ public class KnightServiceImpl implements KnightRadiantService {
     }
 
     @Override
-    public KnightRadiant setRole(Long id, Role role) {
+    public KnightRadiant setIdeal(Long id, Ideal ideal) {
         KnightRadiant updated = this.findById(id);
-        updated.setRole(role);
+        updated.setIdeal(ideal);
         return knightRadiantRepository.save(updated);
     }
 
@@ -83,7 +83,7 @@ public class KnightServiceImpl implements KnightRadiantService {
         KnightRadiant updated = this.findById(id);
 
         // Actualizamos los datos
-        updated.setRole(knightRadiant.getRole());
+        updated.setIdeal(knightRadiant.getIdeal());
         updated.setCurrentMissionId(knightRadiant.getCurrentMissionId());
         updated.setMissionsCompleted(knightRadiant.getMissionsCompleted());
         updated.setRadiantOrder(knightRadiant.getRadiantOrder());

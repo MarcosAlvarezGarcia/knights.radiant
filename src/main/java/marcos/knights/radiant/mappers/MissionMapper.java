@@ -15,6 +15,7 @@ public class MissionMapper {
                 mission.getId(),
                 mission.getTitle(),
                 mission.getDescription(),
+                mission.getLocation(),
                 mission.getSeverity(),
                 mission.getDifficulty(),
                 mission.getEstimatedTime(),
@@ -39,6 +40,7 @@ public class MissionMapper {
             0L,
             missionRequestDto.getTitle(),
             missionRequestDto.getDescription(),
+            missionRequestDto.getLocation(),
             missionRequestDto.getSeverity(),
             missionRequestDto.getDifficulty(),
             missionRequestDto.getEstimatedTime(),
@@ -54,6 +56,7 @@ public class MissionMapper {
     public Mission toModelfromRequestDto(Long missionId) {
         return new Mission(
                 missionId,
+                null,
                 null,
                 null,
                 null,

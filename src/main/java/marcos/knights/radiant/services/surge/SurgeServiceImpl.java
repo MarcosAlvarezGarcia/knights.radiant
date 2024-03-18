@@ -52,7 +52,7 @@ public class SurgeServiceImpl implements SurgeService {
         // Actualizamos los datos
         updated.setName(surge.getName());
         updated.setDescription(surge.getDescription());
-        updated.setRole(surge.getRole());
+        updated.setIdeal(surge.getIdeal());
 
         // Guardamos los cambios
         return surgeRepository.save(updated);

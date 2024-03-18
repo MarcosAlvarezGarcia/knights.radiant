@@ -16,5 +16,5 @@ public class Surge {
     private Long id;
     private String name;
     private String description;
-    private Role role;
+    private Ideal ideal;
 }
