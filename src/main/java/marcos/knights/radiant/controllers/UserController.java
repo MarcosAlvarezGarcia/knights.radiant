@@ -93,15 +93,6 @@ public class UserController {
         return ResponseEntity.ok(service.changeUserRole(user.getId(), role));
     }
 
-    @PatchMapping("/setRadiantOrder")
-    public ResponseEntity<UserDto> setRadiantOrder(
-            @AuthenticationPrincipal User user,
-            @RequestParam Long radiantOrderId
-    ) {
-        log.info("setRadiantOrder");
-        return ResponseEntity.ok(service.setRadiantOrder(user.getId(), radiantOrderId));
-    }
-
     @PostMapping("/create")
     public ResponseEntity<UserDtoWithToken> create(
             @AuthenticationPrincipal User user,

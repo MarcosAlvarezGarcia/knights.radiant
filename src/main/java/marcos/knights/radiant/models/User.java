@@ -23,6 +23,9 @@ public class User implements UserDetails {
     private String userName;
     private String userPassword;
     private Role role;
+    @OneToOne
+    @JoinColumn(name = "knightradiant_id")
+    private KnightRadiant knightRadiant;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

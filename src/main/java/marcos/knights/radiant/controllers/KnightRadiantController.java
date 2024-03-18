@@ -7,6 +7,7 @@ import marcos.knights.radiant.dtos.knightRadiant.KnightRadiantResponseDto;
 import marcos.knights.radiant.dtos.task.TaskResponseDto;
 import marcos.knights.radiant.mappers.KnightRadiantMapper;
 import marcos.knights.radiant.models.KnightRadiant;
+import marcos.knights.radiant.models.Role;
 import marcos.knights.radiant.models.User;
 import marcos.knights.radiant.services.knightRadiant.KnightRadiantService;
 import org.springframework.http.ResponseEntity;
@@ -82,13 +83,13 @@ public class KnightRadiantController {
         return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.setRadiantOrder(id, radiantOrderId)));
     }
 
-    @PatchMapping("/setUser/{id}")
-    public ResponseEntity<KnightRadiantResponseDto> setUser(
-            @AuthenticationPrincipal User user,
-            @PathVariable Long id
+    @PatchMapping("/setRole/{id}")
+    public ResponseEntity<KnightRadiantResponseDto> setRole(
+            @PathVariable Long id,
+            @RequestParam Role role
     ) {
-        log.info("setUser");
-        return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.setUserId(id, user.getId())));
+        log.info("setRadiantOrder");
+        return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.setRole(id, role)));
     }
 
     @PostMapping("/create")

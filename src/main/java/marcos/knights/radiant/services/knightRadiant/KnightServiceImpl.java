@@ -2,10 +2,7 @@ package marcos.knights.radiant.services.knightRadiant;
 
 import lombok.extern.slf4j.Slf4j;
 import marcos.knights.radiant.errors.UserException;
-import marcos.knights.radiant.models.KnightRadiant;
-import marcos.knights.radiant.models.RadiantOrder;
-import marcos.knights.radiant.models.Task;
-import marcos.knights.radiant.models.User;
+import marcos.knights.radiant.models.*;
 import marcos.knights.radiant.repositories.*;
 import org.springframework.stereotype.Service;
 
@@ -16,16 +13,11 @@ import java.util.List;
 public class KnightServiceImpl implements KnightRadiantService {
 
     private final KnightRadiantRepository knightRadiantRepository;
-    private final TaskRepository taskRepository;
-    private final MessageRepository messageRepository;
-    private final UserRepository userRepository;
     private final RadiantOrderRepository radiantOrderRepository;
 
-    public KnightServiceImpl(KnightRadiantRepository knightRadiantRepository, TaskRepository taskRepository, MessageRepository messageRepository, UserRepository userRepository, RadiantOrderRepository radiantOrderRepository) {
+    public KnightServiceImpl(KnightRadiantRepository knightRadiantRepository, RadiantOrderRepository radiantOrderRepository) {
         this.knightRadiantRepository = knightRadiantRepository;
-        this.taskRepository = taskRepository;
-        this.messageRepository = messageRepository;
-        this.userRepository = userRepository;
+
         this.radiantOrderRepository = radiantOrderRepository;
     }
 
@@ -74,11 +66,9 @@ public class KnightServiceImpl implements KnightRadiantService {
     }
 
     @Override
-    public KnightRadiant setUserId(Long id, Long userId) {
+    public KnightRadiant setRole(Long id, Role role) {
         KnightRadiant updated = this.findById(id);
-        User user = userRepository.findById(id).orElseThrow(() -> new UserException.UserNotFoundException(
-                "User with ID " + id + " not found."));
-        updated.setUser(user);
+        updated.setRole(role);
         return knightRadiantRepository.save(updated);
     }
 
@@ -96,7 +86,6 @@ public class KnightServiceImpl implements KnightRadiantService {
         updated.setRole(knightRadiant.getRole());
         updated.setCurrentMissionId(knightRadiant.getCurrentMissionId());
         updated.setMissionsCompleted(knightRadiant.getMissionsCompleted());
-        updated.setUser(knightRadiant.getUser());
         updated.setRadiantOrder(knightRadiant.getRadiantOrder());
 
 

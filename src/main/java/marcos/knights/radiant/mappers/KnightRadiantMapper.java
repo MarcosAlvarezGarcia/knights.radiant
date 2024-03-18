@@ -15,7 +15,6 @@ public class KnightRadiantMapper {
                 knightRadiant.getRole(),
                 knightRadiant.getCurrentMissionId(),
                 knightRadiant.getMissionsCompleted(),
-                knightRadiant.getUser(),
                 knightRadiant.getRadiantOrder()
         );
     }
@@ -33,7 +32,6 @@ public class KnightRadiantMapper {
                 knightRadiantRequestDto.getRole(),
                 knightRadiantRequestDto.getCurrentMissionId(),
                 0L,
-                null,
                 null
         );
     }

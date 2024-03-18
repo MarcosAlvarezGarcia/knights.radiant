@@ -17,9 +17,6 @@ public class KnightRadiant {
     private Role role;
     private Long currentMissionId;
     private Long missionsCompleted;
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
     @ManyToOne
     private RadiantOrder radiantOrder;
 }

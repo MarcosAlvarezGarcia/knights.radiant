@@ -13,6 +13,5 @@ public class KnightRadiantResponseDto {
     private Role role;
     private Long currentMissionId;
     private Long missionsCompleted;
-    private User user;
     private RadiantOrder radiantOrder;
 }

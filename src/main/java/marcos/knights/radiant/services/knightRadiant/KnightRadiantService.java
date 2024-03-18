@@ -1,7 +1,7 @@
 package marcos.knights.radiant.services.knightRadiant;
 
 import marcos.knights.radiant.models.KnightRadiant;
-import marcos.knights.radiant.models.Task;
+import marcos.knights.radiant.models.Role;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public interface KnightRadiantService {
     KnightRadiant setCurrentMissionIdToNull(Long id);
     KnightRadiant setMissionsCompleted(Long id);
     KnightRadiant setRadiantOrder(Long id, Long radiantOrderId);
-    KnightRadiant setUserId(Long id, Long userId);
+    KnightRadiant setRole(Long id, Role role);
     KnightRadiant save(KnightRadiant knightRadiant);
     KnightRadiant update(Long id, KnightRadiant knightRadiant);
 }
