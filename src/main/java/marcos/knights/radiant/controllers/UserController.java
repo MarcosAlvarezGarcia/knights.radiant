@@ -25,6 +25,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/knightsRadiant/users")
+@CrossOrigin (origins = "http://localhost:4200")
 @Slf4j
 public class UserController {
     private final UserService service;

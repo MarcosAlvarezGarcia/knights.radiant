@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/knightsRadiant/surges")
+@CrossOrigin (origins = "http://localhost:4200")
 @RequiredArgsConstructor
 @Slf4j
 public class SurgeController {

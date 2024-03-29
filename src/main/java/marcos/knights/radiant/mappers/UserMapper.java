@@ -14,17 +14,18 @@ import java.util.Optional;
 @Component
 public class UserMapper {
     public User fromDtoRegister(UserDtoRegister dto, UserRepository repository) {
-        Optional<User> user = repository.findByUserName(dto.getEmail());
+        Optional<User> user = repository.findByEmail(dto.getEmail());
         if (user.isPresent() || !Objects.equals(dto.getPassword(), dto.getRepeatPassword())) {
             return null;
         }
-        else return new User(null, dto.getEmail(), dto.getPassword(), Role.KNIGHT_RADIANT, null);
+        else return new User(null, dto.getName(), dto.getEmail(), dto.getPassword(), Role.KNIGHT_RADIANT, null);
     }
 
     public UserDto toDto(User entity) {
         return new UserDto(
                 entity.getId(),
-                entity.getUsername(),
+                entity.getName(),
+                entity.getEmail(),
                 entity.getRole(),
                 entity.getKnightRadiant()
         );

@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/knightsRadiant/missions")
+@CrossOrigin (origins = "http://localhost:4200")
 @RequiredArgsConstructor
 @Slf4j
 public class MissionController {

@@ -279,6 +279,7 @@ public class DataInsertionService {
         UserDtoCreate admin = new UserDtoCreate(
                 "admin",
                 "admin",
+                "admin",
                 Role.HERALD
         );
         userService.create(admin);
@@ -286,6 +287,7 @@ public class DataInsertionService {
         // n-1 users
         for (int i = 0; i < amount-1; i++) {
             UserDtoCreate user = new UserDtoCreate(
+                    faker.name().name(),
                     faker.internet().safeEmailAddress(),
                     faker.internet().password(),
                     Role.KNIGHT_RADIANT

@@ -47,6 +47,15 @@ public class SecurityConfiguration {
                                 .requestMatchers("/error/**").permitAll()
                                 // login / register
                                 .requestMatchers(
+                                    // Pruebas
+
+                                        mvc.pattern("/knightsRadiant/radiantOrders"),
+                                        mvc.pattern("/knightsRadiant/radiantOrders/id/{id}"),
+                                        mvc.pattern("/knightsRadiant/radiantOrders/create"),
+                                        mvc.pattern("/knightsRadiant/radiantOrders/update/{id}"),
+                                        mvc.pattern("/knightsRadiant/radiantOrders/delete/{id}"),
+                                        mvc.pattern("/knightsRadiant/users/id/{id}"),
+                                        mvc.pattern("/knightsRadiant/users/email/{email}"),
                                     // KnightRadiant
                                         // POST
                                         mvc.pattern("/knightsRadiant/knightRadiant/create"),

@@ -1,7 +1,6 @@
 package marcos.knights.radiant.services.user;
 
 import marcos.knights.radiant.models.KnightRadiant;
-import marcos.knights.radiant.models.RadiantOrder;
 import marcos.knights.radiant.services.knightRadiant.KnightRadiantService;
 import marcos.knights.radiant.services.radiantOrder.RadiantOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +41,7 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return repository.findByUserName(username)
+        return repository.findByEmail(username)
                 .orElseThrow(() -> new UserException.UserNotFoundException(
                         "User with email " + username + " not found."));
     }
@@ -52,14 +51,14 @@ public class UserService implements UserDetailsService {
             throw new UserException.UserBadRequestException(
                     "Password and repeated password do not match.");
         }
-        Optional<User> user = repository.findByUserName(dto.getEmail());
+        Optional<User> user = repository.findByEmail(dto.getEmail());
         if (user.isPresent()) {
             throw new UserException.UserBadRequestException(
                     "There's already an account linked to this email.");
         }
         Long users = (long) findAllUsers().size();
         KnightRadiant knightRadiant = knightRadiantService.findById(users+1);
-        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), Role.KNIGHT_RADIANT, knightRadiant));
+        User saved = repository.save(new User(null,dto.getName(), dto.getEmail(), encoder.encode(dto.getPassword()), Role.KNIGHT_RADIANT, knightRadiant));
         return new UserDtoWithToken(
                 mapper.toDto(saved),
                 tokenUtils.create(saved)
@@ -67,13 +66,13 @@ public class UserService implements UserDetailsService {
     }
 
     public UserDtoWithToken create(UserDtoCreate dto) {
-        Optional<User> user = repository.findByUserName(dto.getEmail());
+        Optional<User> user = repository.findByEmail(dto.getEmail());
         if (user.isPresent()) {
             throw new UserException.UserBadRequestException(
                     "There's already an account linked to this email.");
         }
 
-        User saved = repository.save(new User(null, dto.getEmail(), encoder.encode(dto.getPassword()), dto.getRole(), null));
+        User saved = repository.save(new User(null,dto.getName(), dto.getEmail(), encoder.encode(dto.getPassword()), dto.getRole(), null));
         return new UserDtoWithToken(
                 mapper.toDto(saved),
                 tokenUtils.create(saved)
@@ -92,7 +91,7 @@ public class UserService implements UserDetailsService {
     }
 
     public UserDto findUserByEmail(String email) {
-        User user = repository.findByUserName(email)
+        User user = repository.findByEmail(email)
                 .orElseThrow(() -> new UserException.UserNotFoundException(
                         "User with email " + email + " not found."));
         return mapper.toDto(user);
@@ -113,7 +112,7 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new UserException.UserNotFoundException(
                         "User with ID " + id + " not found."));
         user.setRole(role);
-        User saved = repository.save(new User(user.getId(), user.getUsername(),
+        User saved = repository.save(new User(user.getId(), user.getName(), user.getEmail(),
                         encoder.encode(user.getPassword()), user.getRole(), user.getKnightRadiant()));
         return mapper.toDto(saved);
     }
@@ -128,13 +127,13 @@ public class UserService implements UserDetailsService {
                     "Incorrect password.");
         }
 
-        User saved = repository.save(new User(user.getId(), user.getUsername(),
+        User saved = repository.save(new User(user.getId(), user.getName(), user.getEmail(),
                         encoder.encode(dto.getNewPassword()), user.getRole(), user.getKnightRadiant()));
         return mapper.toDto(saved);
     }
 
     public UserDto update(UserDtoUpdate dto) {
-        User user = repository.findByUserName(dto.getEmail())
+        User user = repository.findByEmail(dto.getEmail())
                 .orElseThrow(() -> new UserException.UserNotFoundException(
                         "User with email " + dto.getEmail() + " not found."));
 
@@ -143,14 +142,14 @@ public class UserService implements UserDetailsService {
                     "Incorrect password.");
         }
 
-        User saved = repository.save(new User(user.getId(), user.getUsername(),
+        User saved = repository.save(new User(user.getId(), user.getName(), user.getEmail(),
                         encoder.encode(dto.getNewPassword()), user.getRole(), user.getKnightRadiant()));
         return mapper.toDto(saved);
     }
 
     //TODO: Cambiar a que sea por ID.
     public UserDto delete(String email) {
-        User user = repository.findByUserName(email)
+        User user = repository.findByEmail(email)
                 .orElseThrow(() -> new UserException.UserNotFoundException(
                         "User with email " + email + " not found."));
 

@@ -12,6 +12,7 @@ import marcos.knights.radiant.models.Role;
 @NoArgsConstructor
 public class UserDto {
     private Long id;
+    private String name;
     private String email;
     private Role role;
     private KnightRadiant knightRadiant;

@@ -9,6 +9,7 @@ import marcos.knights.radiant.models.Role;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDtoCreate {
+    private String name;
     private String email;
     private String password;
     private Role role;

@@ -19,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/knightsRadiant/knightRadiant")
+@CrossOrigin (origins = "http://localhost:4200")
 @RequiredArgsConstructor
 @Slf4j
 public class KnightRadiantController {
