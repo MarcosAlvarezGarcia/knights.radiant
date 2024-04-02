@@ -13,6 +13,11 @@ public class KnightRadiantMapper {
         return new KnightRadiantResponseDto(
                 knightRadiant.getId(),
                 knightRadiant.getIdeal(),
+                knightRadiant.getFirstIdeal(),
+                knightRadiant.getSecondIdeal(),
+                knightRadiant.getThirdIdeal(),
+                knightRadiant.getFourthIdeal(),
+                knightRadiant.getFifthIdeal(),
                 knightRadiant.getCurrentMissionId(),
                 knightRadiant.getMissionsCompleted(),
                 knightRadiant.getRadiantOrder()
@@ -30,6 +35,11 @@ public class KnightRadiantMapper {
         return new KnightRadiant(
                 0L,
                 knightRadiantRequestDto.getIdeal(),
+                knightRadiantRequestDto.getFirstIdeal(),
+                knightRadiantRequestDto.getSecondIdeal(),
+                knightRadiantRequestDto.getThirdIdeal(),
+                knightRadiantRequestDto.getFourthIdeal(),
+                knightRadiantRequestDto.getFifthIdeal(),
                 knightRadiantRequestDto.getCurrentMissionId(),
                 0L,
                 null

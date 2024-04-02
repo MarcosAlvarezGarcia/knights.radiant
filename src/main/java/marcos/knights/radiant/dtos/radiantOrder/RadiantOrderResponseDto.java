@@ -11,8 +11,15 @@ import java.util.List;
 public class RadiantOrderResponseDto {
     private Long id;
     private String name;
+    private String herald;
+    private String archetype;
+    private String gemstone;
     private String sprenType;
-    private String description;
     private String attributes;
+    private String color;
+    private String oathTheme;
+    private String description;
+    private String logo;
+    private String glyph;
     private List<Surge> surges;
 }

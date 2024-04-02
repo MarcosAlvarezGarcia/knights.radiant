@@ -10,6 +10,11 @@ import marcos.knights.radiant.models.RadiantOrder;
 public class KnightRadiantResponseDto {
     private final Long id;
     private Ideal ideal;
+    private String firstIdeal;
+    private String secondIdeal;
+    private String thirdIdeal;
+    private String fourthIdeal;
+    private String fifthIdeal;
     private Long currentMissionId;
     private Long missionsCompleted;
     private RadiantOrder radiantOrder;

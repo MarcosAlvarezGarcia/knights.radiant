@@ -28,7 +28,7 @@ public class DataInsertionService {
     private final UserService userService;
 
     private final Faker faker = new Faker(new Locale("es-ES"));
-
+    /*
     public void createSurges(int amount){
         String[] SurgesName = {
                 "Adhesion",
@@ -295,4 +295,6 @@ public class DataInsertionService {
             userService.create(user);
         }
     }
+
+     */
 }

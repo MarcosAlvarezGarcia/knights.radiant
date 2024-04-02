@@ -84,6 +84,11 @@ public class KnightServiceImpl implements KnightRadiantService {
 
         // Actualizamos los datos
         updated.setIdeal(knightRadiant.getIdeal());
+        updated.setFirstIdeal(knightRadiant.getFirstIdeal());
+        updated.setSecondIdeal(knightRadiant.getSecondIdeal());
+        updated.setThirdIdeal(knightRadiant.getThirdIdeal());
+        updated.setFourthIdeal(knightRadiant.getFourthIdeal());
+        updated.setFifthIdeal(knightRadiant.getFifthIdeal());
         updated.setCurrentMissionId(knightRadiant.getCurrentMissionId());
         updated.setMissionsCompleted(knightRadiant.getMissionsCompleted());
         updated.setRadiantOrder(knightRadiant.getRadiantOrder());

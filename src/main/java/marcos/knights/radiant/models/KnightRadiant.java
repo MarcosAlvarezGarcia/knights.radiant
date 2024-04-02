@@ -15,6 +15,11 @@ public class KnightRadiant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Ideal ideal;
+    private String firstIdeal;
+    private String secondIdeal;
+    private String thirdIdeal;
+    private String fourthIdeal;
+    private String fifthIdeal;
     private Long currentMissionId;
     private Long missionsCompleted;
     @ManyToOne

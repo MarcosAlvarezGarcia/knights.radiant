@@ -17,9 +17,20 @@ public class RadiantOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String herald;
+    private String archetype;
+    private String gemstone;
     private String sprenType;
-    private String description;
     private String attributes;
+    private String color;
+    @Column(columnDefinition = "LONGTEXT")
+    private String oathTheme;
+    @Column(columnDefinition = "LONGTEXT")
+    private String description;
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] logo;
+    @Column(columnDefinition = "LONGBLOB")
+    private byte[] glyph;
     @ManyToMany
     private List<Surge> surges;
 }
