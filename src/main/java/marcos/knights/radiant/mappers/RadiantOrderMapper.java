@@ -23,8 +23,6 @@ public class RadiantOrderMapper {
                 radiantOrder.getColor(),
                 radiantOrder.getOathTheme(),
                 radiantOrder.getDescription(),
-                convertBytesToString(radiantOrder.getLogo()), // Convertir byte[] a String
-                convertBytesToString(radiantOrder.getGlyph()),  // Convertir byte[] a String
                 radiantOrder.getSurges()
 
         );
@@ -49,8 +47,6 @@ public class RadiantOrderMapper {
             radiantOrderRequestDto.getColor(),
             radiantOrderRequestDto.getOathTheme(),
             radiantOrderRequestDto.getDescription(),
-            null,
-            null,
             radiantOrderRequestDto.getSurges()
         );
     }

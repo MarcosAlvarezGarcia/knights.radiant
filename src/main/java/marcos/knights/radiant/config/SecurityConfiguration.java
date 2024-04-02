@@ -50,6 +50,7 @@ public class SecurityConfiguration {
                                     // Pruebas
 
                                         mvc.pattern("/knightsRadiant/radiantOrders"),
+                                        mvc.pattern("/knightsRadiant/knightRadiant/setRadiantOrder/{id}"),
                                         mvc.pattern("/knightsRadiant/radiantOrders/id/{id}"),
                                         mvc.pattern("/knightsRadiant/radiantOrders/create"),
                                         mvc.pattern("/knightsRadiant/radiantOrders/update/{id}"),

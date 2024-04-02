@@ -1,5 +1,6 @@
 package marcos.knights.radiant.services.radiantOrder;
 
+import jakarta.persistence.Column;
 import lombok.extern.slf4j.Slf4j;
 import marcos.knights.radiant.models.RadiantOrder;
 import marcos.knights.radiant.repositories.RadiantOrderRepository;
@@ -51,9 +52,14 @@ public class RadiantOrderServiceImpl implements RadiantOrderService {
 
         // Actualizamos los datos
         updated.setName(radiantOrder.getName());
+        updated.setHerald(radiantOrder.getHerald());
+        updated.setArchetype(radiantOrder.getArchetype());
+        updated.setGemstone(radiantOrder.getGemstone());
         updated.setSprenType(radiantOrder.getSprenType());
-        updated.setDescription(radiantOrder.getDescription());
         updated.setAttributes(radiantOrder.getAttributes());
+        updated.setColor(radiantOrder.getColor());
+        updated.setOathTheme(radiantOrder.getOathTheme());
+        updated.setDescription(radiantOrder.getDescription());
         updated.setSurges(radiantOrder.getSurges());
 
         // Guardamos los cambios

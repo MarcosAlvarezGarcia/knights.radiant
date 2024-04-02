@@ -19,7 +19,5 @@ public class RadiantOrderRequestDto {
     private final String color;
     private final String oathTheme;
     private final String description;
-    private final String logo;
-    private final String glyph;
     private final List<Surge> surges;
 }
