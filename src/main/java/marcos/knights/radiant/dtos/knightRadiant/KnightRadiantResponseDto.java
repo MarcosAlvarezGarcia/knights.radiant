@@ -9,7 +9,7 @@ import marcos.knights.radiant.models.RadiantOrder;
 @AllArgsConstructor
 public class KnightRadiantResponseDto {
     private final Long id;
-    private Ideal ideal;
+    private Long ideal;
     private String firstIdeal;
     private String secondIdeal;
     private String thirdIdeal;

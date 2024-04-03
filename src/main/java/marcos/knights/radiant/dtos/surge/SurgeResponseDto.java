@@ -11,5 +11,5 @@ public class SurgeResponseDto {
     private Long id;
     private String name;
     private String description;
-    private Ideal ideal;
+    private Long ideal;
 }

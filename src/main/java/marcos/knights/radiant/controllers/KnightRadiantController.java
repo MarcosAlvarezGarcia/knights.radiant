@@ -51,6 +51,51 @@ public class KnightRadiantController {
         return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.findById(id)));
     }
 
+    @PatchMapping("/setFirstIdeal/{id}")
+    public ResponseEntity<KnightRadiantResponseDto> setFirstIdeal(
+            @PathVariable Long id,
+            @RequestParam String firstIdeal
+    ) {
+        log.info("setFirstIdeal");
+        return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.setFirstIdeal(id, firstIdeal)));
+    }
+
+    @PatchMapping("/setSecondIdeal/{id}")
+    public ResponseEntity<KnightRadiantResponseDto> setSecondIdeal(
+            @PathVariable Long id,
+            @RequestParam String secondIdeal
+    ) {
+        log.info("setSecondIdeal");
+        return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.setSecondIdeal(id, secondIdeal)));
+    }
+
+    @PatchMapping("/setThirdIdeal/{id}")
+    public ResponseEntity<KnightRadiantResponseDto> setThirdIdeal(
+            @PathVariable Long id,
+            @RequestParam String thirdIdeal
+    ) {
+        log.info("setThirdIdeal");
+        return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.setThirdIdeal(id, thirdIdeal)));
+    }
+
+    @PatchMapping("/setFourthIdeal/{id}")
+    public ResponseEntity<KnightRadiantResponseDto> setFourthIdeal(
+            @PathVariable Long id,
+            @RequestParam String fourthIdeal
+    ) {
+        log.info("setFourthIdeal");
+        return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.setFourthIdeal(id, fourthIdeal)));
+    }
+
+    @PatchMapping("/setFifthIdeal/{id}")
+    public ResponseEntity<KnightRadiantResponseDto> setFifthIdeal(
+            @PathVariable Long id,
+            @RequestParam String fifthIdeal
+    ) {
+        log.info("setFifthIdeal");
+        return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.setFifthIdeal(id, fifthIdeal)));
+    }
+
     @PatchMapping("/setCurrentMissionId/{id}")
     public ResponseEntity<KnightRadiantResponseDto> setCurrentMissionId(
             @PathVariable Long id,
@@ -85,13 +130,12 @@ public class KnightRadiantController {
         return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.setRadiantOrder(id, radiantOrderId)));
     }
 
-    @PatchMapping("/setRole/{id}")
-    public ResponseEntity<KnightRadiantResponseDto> setRole(
-            @PathVariable Long id,
-            @RequestParam Ideal ideal
+    @PatchMapping("/setIdeal/{id}")
+    public ResponseEntity<KnightRadiantResponseDto> setIdeal(
+            @PathVariable Long id
     ) {
         log.info("setRadiantOrder");
-        return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.setIdeal(id, ideal)));
+        return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.setIdeal(id)));
     }
 
     @PostMapping("/create")

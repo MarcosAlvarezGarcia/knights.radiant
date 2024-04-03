@@ -37,6 +37,41 @@ public class KnightServiceImpl implements KnightRadiantService {
     }
 
     @Override
+    public KnightRadiant setFirstIdeal(Long id, String firstIdeal) {
+        KnightRadiant updated = this.findById(id);
+        updated.setFirstIdeal(firstIdeal);
+        return knightRadiantRepository.save(updated);
+    }
+
+    @Override
+    public KnightRadiant setSecondIdeal(Long id, String secondIdeal) {
+        KnightRadiant updated = this.findById(id);
+        updated.setSecondIdeal(secondIdeal);
+        return knightRadiantRepository.save(updated);
+    }
+
+    @Override
+    public KnightRadiant setThirdIdeal(Long id, String thirdIdeal) {
+        KnightRadiant updated = this.findById(id);
+        updated.setThirdIdeal(thirdIdeal);
+        return knightRadiantRepository.save(updated);
+    }
+
+    @Override
+    public KnightRadiant setFourthIdeal(Long id, String fourthIdeal) {
+        KnightRadiant updated = this.findById(id);
+        updated.setFourthIdeal(fourthIdeal);
+        return knightRadiantRepository.save(updated);
+    }
+
+    @Override
+    public KnightRadiant setFifthIdeal(Long id, String fifthIdeal) {
+        KnightRadiant updated = this.findById(id);
+        updated.setFifthIdeal(fifthIdeal);
+        return knightRadiantRepository.save(updated);
+    }
+
+    @Override
     public KnightRadiant setCurrentMissionId(Long id, Long currentMissionId) {
         KnightRadiant updated = this.findById(id);
         updated.setCurrentMissionId(currentMissionId);
@@ -66,9 +101,9 @@ public class KnightServiceImpl implements KnightRadiantService {
     }
 
     @Override
-    public KnightRadiant setIdeal(Long id, Ideal ideal) {
+    public KnightRadiant setIdeal(Long id) {
         KnightRadiant updated = this.findById(id);
-        updated.setIdeal(ideal);
+        updated.setIdeal(updated.getIdeal()+1);
         return knightRadiantRepository.save(updated);
     }
 

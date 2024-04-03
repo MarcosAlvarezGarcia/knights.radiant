@@ -14,7 +14,7 @@ public class KnightRadiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Ideal ideal;
+    private Long ideal;
     private String firstIdeal;
     private String secondIdeal;
     private String thirdIdeal;

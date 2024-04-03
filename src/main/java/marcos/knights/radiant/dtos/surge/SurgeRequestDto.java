@@ -10,5 +10,5 @@ import marcos.knights.radiant.models.Role;
 public class SurgeRequestDto {
     private final String name;
     private final String description;
-    private final Ideal ideal;
+    private final Long ideal;
 }

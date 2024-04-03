@@ -7,7 +7,7 @@ import marcos.knights.radiant.models.Ideal;
 @Data
 @AllArgsConstructor
 public class KnightRadiantRequestDto {
-    private Ideal ideal;
+    private Long ideal;
     private String firstIdeal;
     private String secondIdeal;
     private String thirdIdeal;
