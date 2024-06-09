@@ -47,16 +47,6 @@ public class SecurityConfiguration {
                                 .requestMatchers("/error/**").permitAll()
                                 // login / register
                                 .requestMatchers(
-                                    // Pruebas
-
-                                        mvc.pattern("/knightsRadiant/radiantOrders"),
-                                        mvc.pattern("/knightsRadiant/knightRadiant/setRadiantOrder/{id}"),
-                                        mvc.pattern("/knightsRadiant/radiantOrders/id/{id}"),
-                                        mvc.pattern("/knightsRadiant/radiantOrders/create"),
-                                        mvc.pattern("/knightsRadiant/radiantOrders/update/{id}"),
-                                        mvc.pattern("/knightsRadiant/radiantOrders/delete/{id}"),
-                                        mvc.pattern("/knightsRadiant/users/id/{id}"),
-                                        mvc.pattern("/knightsRadiant/users/email/{email}"),
                                     // KnightRadiant
                                         // POST
                                         mvc.pattern("/knightsRadiant/knightRadiant/create"),
@@ -77,11 +67,17 @@ public class SecurityConfiguration {
                                 .requestMatchers(
                                     // Users
                                         // GET
-                                        "/knightsRadiant/users",
                                         "/knightsRadiant/users/id/{id}",
                                         "/knightsRadiant/users/email/{email}"
 
                                 ).hasAnyRole("KNIGHT_RADIANT", "HERALD")
+                                .requestMatchers(
+                                        // Missions
+                                        // POST
+                                        "/knightsRadiant/users",
+                                        "/knightsRadiant/users/delte/{email}"
+
+                                ).hasAnyRole("HERALD")
                                 // Cualquier otra request con lo que sea (en esta caso autenticación)
                                 .anyRequest().authenticated()
                         //.anyRequest().permitAll()

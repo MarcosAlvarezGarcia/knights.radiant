@@ -1,6 +1,7 @@
 package marcos.knights.radiant.services.user;
 
 import marcos.knights.radiant.models.KnightRadiant;
+import marcos.knights.radiant.repositories.KnightRadiantRepository;
 import marcos.knights.radiant.services.knightRadiant.KnightRadiantService;
 import marcos.knights.radiant.services.radiantOrder.RadiantOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +27,16 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
 
     private final UserRepository repository;
+    private final KnightRadiantRepository knightRadiantRepository;
     private final JwtTokenUtils tokenUtils;
     private final UserMapper mapper;
     private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
     private final KnightRadiantService knightRadiantService;
 
     @Autowired
-    public UserService(UserRepository repository, JwtTokenUtils tokenUtils, UserMapper mapper, RadiantOrderService radiantOrderService, KnightRadiantService knightRadiantService) {
+    public UserService(UserRepository repository, KnightRadiantRepository knightRadiantRepository, JwtTokenUtils tokenUtils, UserMapper mapper, RadiantOrderService radiantOrderService, KnightRadiantService knightRadiantService) {
         this.repository = repository;
+        this.knightRadiantRepository = knightRadiantRepository;
         this.tokenUtils = tokenUtils;
         this.mapper = mapper;
         this.knightRadiantService = knightRadiantService;
@@ -57,7 +60,7 @@ public class UserService implements UserDetailsService {
                     "There's already an account linked to this email.");
         }
         Long users = (long) findAllUsers().size();
-        KnightRadiant knightRadiant = knightRadiantService.findById(users+1);
+        KnightRadiant knightRadiant = knightRadiantRepository.findTopByOrderByIdDesc();
         User saved = repository.save(new User(null,dto.getName(), dto.getEmail(), encoder.encode(dto.getPassword()), Role.KNIGHT_RADIANT, knightRadiant));
         return new UserDtoWithToken(
                 mapper.toDto(saved),

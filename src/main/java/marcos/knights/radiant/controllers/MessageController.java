@@ -6,8 +6,10 @@ import marcos.knights.radiant.dtos.message.MessageRequestDto;
 import marcos.knights.radiant.dtos.message.MessageResponseDto;
 import marcos.knights.radiant.mappers.MessageMapper;
 import marcos.knights.radiant.models.Message;
+import marcos.knights.radiant.models.User;
 import marcos.knights.radiant.services.message.MessageService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,10 +50,13 @@ public class MessageController {
 
     @PostMapping("/create")
     public ResponseEntity<MessageResponseDto> postMessage(
+            @AuthenticationPrincipal User user,
             @RequestBody MessageRequestDto messageRequestDto
     ) {
         log.info("addMessage");
-        Message messageSaved = messageService.save(messageMapper.toModel(messageRequestDto));
+        Long userId = user.getId();
+        MessageRequestDto dtoWithUserId = new MessageRequestDto(userId, messageRequestDto.getTitle(), messageRequestDto.getContent());
+        Message messageSaved = messageService.save(messageMapper.toModel(dtoWithUserId));
         return ResponseEntity.created(null).body(messageMapper.toResponse(messageSaved));
     }
 

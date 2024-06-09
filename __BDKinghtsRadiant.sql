@@ -240,7 +240,7 @@ INSERT INTO missions_requirements (Mission_id, requirements_id) VALUES
 
 
 
-
+/*
 DROP TABLE IF EXISTS users;
 CREATE TABLE IF NOT EXISTS users (
                                      id INT(11) NOT NULL AUTO_INCREMENT,
@@ -251,14 +251,15 @@ CREATE TABLE IF NOT EXISTS users (
 ) ENGINE=InnoDB;
 
 TRUNCATE TABLE users;
-INSERT INTO users(name, description, role) VALUES
-	('Adhesion', 'The Surge of Adhesion can be manipulated to bind things together.', 'NO_IDEAL'),
-	('Gravitation', "The Surge of Gravitation can be manipulated to change the direction and strength of an object's gravitational attraction.", 'SECOND_IDEAL'),
-	('Division', 'The Surge of Division can be manipulated to have power over destruction and decay.', 'THIRD_IDEAL'),
-	('Abrasion', 'The Surge of Abrasion can be manipulated to alter the frictional force between two surfaces.', 'FIRST_IDEAL'),
-	('Progression', 'The Surge of Progression can be manipulated to alter the growth and healing of organisms.', 'SECOND_IDEAL'),
-	('Ilumination', 'The Surge of Ilumination can be manipulated to create auditory and visual ilusions.', 'NO_IDEAL'),
-	('Transformation', 'The Surge of Transformation can be manipulated to change an object into one of the ten essences.', 'NO_IDEAL'),
-	('Transportation', 'The Surge of Transportation can be manipulated to achieve realmatic transition.', 'SECOND_IDEAL'),
-	('Cohesion', 'The Surge of Cohesion can be manipulated to alter objects at a molecular level.', 'FIRST_IDEAL'),
-	('Tension', 'The Surge of Tension can be manipulated to alter the stiffness of an object.', 'SECOND_IDEAL')
+*/
+INSERT INTO users(email, name, role, userPassword, knightradiant_id) VALUES
+	('jezerezeh@gmail.com', 'Jezerezeh', 1,  'jezerezeh', 95),
+	('nalan@gmail.com', 'Nalan', 1,  'nalan', 96),
+	('chanaranach@gmail.com', 'Chanaranach', 1,  'chanaranach', 97),
+	('vedeledev@gmail.com', 'Vedeledev', 1,  'vedeledev', 98),
+	('pailiah@gmail.com', 'Pailiah', 1,  'pailiah', 100),
+	('shalash@gmail.com', 'Shalash', 1,  'shalash', 101),
+	('battah@gmail.com', 'Battah', 1,  'battah', 102),
+	('kalak@gmail.com', 'Kalak', 1,  'kalak', 103),
+	('talenelat@gmail.com', 'Talenelat', 1,  'talenelat', 104),
+	('ishi@gmail.com', 'Ishi', 1,  'ishi', 105)

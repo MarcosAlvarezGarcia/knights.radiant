@@ -30,6 +30,10 @@ public class KnightServiceImpl implements KnightRadiantService {
     public List<KnightRadiant> findAll() {
         return knightRadiantRepository.findAll();
     }
+    @Override
+    public List<KnightRadiant> findByOrderId(Long orderId) {
+        return knightRadiantRepository.findByRadiantOrder_Id(orderId);
+    }
 
     @Override
     public KnightRadiant findById(Long id) {

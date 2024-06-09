@@ -9,6 +9,7 @@ import java.util.List;
 public interface KnightRadiantService {
     void deleteById(Long id);
     List<KnightRadiant> findAll();
+    List<KnightRadiant> findByOrderId(Long orderId);
     KnightRadiant findById(Long id);
     KnightRadiant setFirstIdeal(Long id, String firstIdeal);
     KnightRadiant setSecondIdeal(Long id, String secondIdeal);

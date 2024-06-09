@@ -43,6 +43,14 @@ public class KnightRadiantController {
         return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.findAll()));
     }
 
+    @GetMapping("orderId/{id}")
+    public ResponseEntity<List<KnightRadiantResponseDto>> getKnightRadiantsByOrder(
+            @PathVariable Long orderId
+    ) {
+        log.info("getKnightRadiantsByOrder");
+        return ResponseEntity.ok(knightRadiantMapper.toResponse(knightRadiantService.findByOrderId(orderId)));
+    }
+
     @GetMapping("id/{id}")
     public ResponseEntity<KnightRadiantResponseDto> getKnightRadiantById(
             @PathVariable Long id
